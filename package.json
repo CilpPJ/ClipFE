@@ -19,17 +19,17 @@
     ]
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@tanstack/react-query": "^5.81.2",
     "axios": "^1.10.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "6.28.0",
-    "tailwind-scrollbar-hide": "^4.0.0",
-    "tailwindcss": "^4.1.11",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.13.5",
     "@eslint/js": "^9.29.0",
     "@tanstack/react-query-devtools": "^5.81.2",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
@@ -47,14 +47,12 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
-    "eslint-plugin-tailwindcss": "^3.18.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "msw": "^2.10.2",
     "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.6.13",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"
