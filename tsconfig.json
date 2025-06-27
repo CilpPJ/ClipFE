@@ -5,6 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
