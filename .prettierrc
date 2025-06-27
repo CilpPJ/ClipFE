@@ -28,7 +28,7 @@
   "importOrder": [
     "^react(.*)$",
     "<THIRD_PARTY_MODULES>",
-    "^@/(app|entities|features|pages|shared|widgets)$",
+    "^@/(.*)$",
     "^\\.\\.(?:/|$)",
     "^\\.(?:/|$)"
   ],
