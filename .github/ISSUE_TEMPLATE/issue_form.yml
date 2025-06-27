@@ -1,7 +1,7 @@
 name: 'ONO-FE 이슈 생성'
 description: 'ONO-FE Repo에 이슈를 생성합니다.'
 labels: []
-title: ''
+title: '제목을 입력해주세요'
 body:
   - type: input
     id: description
