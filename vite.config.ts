@@ -5,12 +5,9 @@ import { defineConfig } from 'vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-      plugins: [['@emotion/babel-plugin', {}]],
-    }),
+    react(),
   ],
-  resolve: {
+  resolve: {  
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
