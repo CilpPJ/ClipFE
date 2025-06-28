@@ -75,59 +75,57 @@ function SelectTrigger({
       data-slot='select-trigger'
       data-size={size}
       css={css`
-        display: flex; /* flex */
-        width: fit-content; /* w-fit */
-        align-items: center; /* items-center */
-        justify-content: space-between; /* justify-between */
-        gap: 0.5rem; /* gap-2 */
-        border-radius: 0.375rem; /* rounded-md */
-        border: 1px solid var(--input); /* border border-input */
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        border-radius: 0.375rem;
+        border: 1px solid var(--input);
         background-color: transparent;
-        padding: 0.5rem 0.75rem; /* px-3 py-2 */
-        font-size: 0.875rem; /* text-sm */
-        white-space: nowrap; /* whitespace-nowrap */
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-xs */
-        transition: color, box-shadow; /* transition-[color,box-shadow] */
-        outline: none; /* outline-none */
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        transition:
+          color 150ms,
+          box-shadow 150ms;
+        outline: none;
 
         &:focus-visible {
-          border-color: var(--ring); /* focus-visible:border-ring */
-          box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent); /* focus-visible:ring-[3px] focus-visible:ring-ring/50 */
+          border-color: var(--ring);
+          box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent);
         }
 
         &:disabled {
-          cursor: not-allowed; /* disabled:cursor-not-allowed */
-          opacity: 0.5; /* disabled:opacity-50 */
+          cursor: not-allowed;
+          opacity: 0.5;
         }
 
         &[aria-invalid='true'] {
-          border-color: var(
-            --destructive
-          ); /* aria-invalid:border-destructive */
+          border-color: var(--destructive);
           box-shadow: 0 0 0 3px
-            color-mix(in srgb, var(--destructive) 20%, transparent); /* aria-invalid:ring-destructive/20 */
+            color-mix(in srgb, var(--destructive) 20%, transparent);
         }
 
         &[data-placeholder] {
-          color: var(
-            --muted-foreground
-          ); /* data-[placeholder]:text-muted-foreground */
+          color: var(--muted-foreground);
         }
 
         &[data-size='default'] {
-          height: 2.25rem; /* h-9 */
+          height: 2.25rem;
         }
 
         &[data-size='sm'] {
-          height: 2rem; /* h-8 */
+          height: 2rem;
         }
 
         & [data-slot='select-value'] {
-          display: flex; /* flex */
-          align-items: center; /* items-center */
-          gap: 0.5rem; /* gap-2 */
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
           display: -webkit-box;
-          -webkit-line-clamp: 1; /* line-clamp-1 */
+          -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -139,25 +137,25 @@ function SelectTrigger({
         }
 
         & svg:not([class*='size-']) {
-          width: 1rem; /* size-4 */
-          height: 1rem; /* size-4 */
+          width: 1rem;
+          height: 1rem;
         }
 
         & svg:not([class*='text-']) {
-          color: var(--muted-foreground); /* text-muted-foreground */
+          color: var(--muted-foreground);
         }
 
         .dark & {
-          background-color: oklch(0 0 0 / 0.3); /* dark:bg-input/30 */
+          background-color: color-mix(in srgb, var(--input) 30%, transparent);
         }
 
         .dark &:hover {
-          background-color: oklch(0 0 0 / 0.5); /* dark:hover:bg-input/50 */
+          background-color: color-mix(in srgb, var(--input) 50%, transparent);
         }
 
         .dark &[aria-invalid='true'] {
           box-shadow: 0 0 0 3px
-            color-mix(in srgb, var(--destructive) 40%, transparent); /* dark:aria-invalid:ring-destructive/40 */
+            color-mix(in srgb, var(--destructive) 40%, transparent);
         }
       `}
       className={className}
@@ -165,7 +163,13 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className='size-4 opacity-50' />
+        <ChevronDownIcon
+          css={css`
+            width: 0.875rem;
+            height: 0.875rem;
+            opacity: 0.5;
+          `}
+        />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
@@ -182,73 +186,61 @@ function SelectContent({
       <SelectPrimitive.Content
         data-slot='select-content'
         css={css`
-          position: relative; /* relative */
-          z-index: 50; /* z-50 */
-          max-height: var(
-            --radix-select-content-available-height
-          ); /* max-h-(--radix-select-content-available-height) */
-          min-width: 8rem; /* min-w-[8rem] */
+          position: relative;
+          z-index: 50;
+          max-height: var(--radix-select-content-available-height);
+          min-width: 8rem;
           transform-origin: var(--radix-select-content-transform-origin);
-          overflow-x: hidden; /* overflow-x-hidden */
-          overflow-y: auto; /* overflow-y-auto */
-          border-radius: 0.375rem; /* rounded-md */
-          border: 1px solid var(--border); /* border */
-          background-color: var(--popover); /* bg-popover */
-          color: var(--popover-foreground); /* text-popover-foreground */
+          overflow-x: hidden;
+          overflow-y: auto;
+          border-radius: 0.375rem;
+          border: 1px solid var(--border);
+          background-color: var(--popover);
+          color: var(--popover-foreground);
           box-shadow:
             0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+            0 2px 4px -2px rgba(0, 0, 0, 0.1);
 
           &[data-side='bottom'] {
-            animation-name: ${slideInFromTop}; /* slide-in-from-top-2 */
+            animation-name: ${slideInFromTop};
           }
           &[data-side='left'] {
-            animation-name: ${slideInFromRight}; /* slide-in-from-right-2 */
+            animation-name: ${slideInFromRight};
           }
           &[data-side='right'] {
-            animation-name: ${slideInFromLeft}; /* slide-in-from-left-2 */
+            animation-name: ${slideInFromLeft};
           }
           &[data-side='top'] {
-            animation-name: ${slideInFromBottom}; /* slide-in-from-bottom-2 */
+            animation-name: ${slideInFromBottom};
           }
 
           &[data-state='closed'] {
-            animation-name: ${fadeOut}, ${zoomOut}; /* fade-out-0 zoom-out-95 */
-            animation-duration: 200ms; /* Default Tailwind animation duration */
-            animation-timing-function: cubic-bezier(
-              0.4,
-              0,
-              0.2,
-              1
-            ); /* Default Tailwind ease-in-out */
+            animation-name: ${fadeOut}, ${zoomOut};
+            animation-duration: 200ms;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             animation-fill-mode: forwards;
           }
 
           &[data-state='open'] {
-            animation-name: ${fadeIn}, ${zoomIn}; /* fade-in-0 zoom-in-95 */
-            animation-duration: 200ms; /* Default Tailwind animation duration */
-            animation-timing-function: cubic-bezier(
-              0.4,
-              0,
-              0.2,
-              1
-            ); /* Default Tailwind ease-in-out */
+            animation-name: ${fadeIn}, ${zoomIn};
+            animation-duration: 200ms;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             animation-fill-mode: forwards;
           }
 
           ${position === 'popper' &&
           css`
             &[data-side='bottom'] {
-              transform: translateY(0.25rem); /* translate-y-1 */
+              transform: translateY(0.25rem);
             }
             &[data-side='left'] {
-              transform: translateX(-0.25rem); /* -translate-x-1 */
+              transform: translateX(-0.25rem);
             }
             &[data-side='right'] {
-              transform: translateX(0.25rem); /* translate-x-1 */
+              transform: translateX(0.25rem);
             }
             &[data-side='top'] {
-              transform: translateY(-0.25rem); /* -translate-y-1 */
+              transform: translateY(-0.25rem);
             }
           `}
         `}
@@ -259,19 +251,15 @@ function SelectContent({
         <SelectScrollUpButton />
         <SelectPrimitive.Viewport
           css={css`
-            padding: 0.25rem; /* p-1 */
+            padding: 0.25rem;
 
             ${position === 'popper' &&
             css`
-              height: var(
-                --radix-select-trigger-height
-              ); /* h-[var(--radix-select-trigger-height)] */
-              width: 100%; /* w-full */
-              min-width: var(
-                --radix-select-trigger-width
-              ); /* min-w-[var(--radix-select-trigger-width)] */
-              scroll-margin-top: 0.25rem; /* scroll-my-1 (scroll-margin-top) */
-              scroll-margin-bottom: 0.25rem; /* scroll-my-1 (scroll-margin-bottom) */
+              height: var(--radix-select-trigger-height);
+              width: 100%;
+              min-width: var(--radix-select-trigger-width);
+              scroll-margin-top: 0.25rem;
+              scroll-margin-bottom: 0.25rem;
             `}
           `}
           className={className}
@@ -292,9 +280,9 @@ function SelectLabel({
     <SelectPrimitive.Label
       data-slot='select-label'
       css={css`
-        padding: 0.375rem 0.5rem; /* px-2 py-1.5 */
-        font-size: 0.75rem; /* text-xs */
-        color: var(--muted-foreground); /* text-muted-foreground */
+        padding: 0.375rem 0.5rem;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
       `}
       className={className}
       {...props}
@@ -311,26 +299,26 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot='select-item'
       css={css`
-        position: relative; /* relative */
-        display: flex; /* flex */
-        width: 100%; /* w-full */
-        cursor: default; /* cursor-default */
-        align-items: center; /* items-center */
-        gap: 0.5rem; /* gap-2 */
+        position: relative;
+        display: flex;
+        width: 100%;
+        cursor: default;
+        align-items: center;
+        gap: 0.5rem;
         border-radius: 0.125rem; /* rounded-sm */
-        padding: 0.375rem 2rem 0.375rem 0.5rem; /* py-1.5 pr-8 pl-2 */
-        font-size: 0.875rem; /* text-sm */
-        outline: none; /* outline-hidden (tailwind class, assuming it means outline: none) */
-        user-select: none; /* select-none */
+        padding: 0.375rem 2rem 0.375rem 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        user-select: none;
 
         &:focus {
-          background-color: var(--accent); /* focus:bg-accent */
-          color: var(--accent-foreground); /* focus:text-accent-foreground */
+          background-color: var(--accent);
+          color: var(--accent-foreground);
         }
 
         &[data-disabled] {
-          pointer-events: none; /* data-[disabled]:pointer-events-none */
-          opacity: 0.5; /* data-[disabled]:opacity-50 */
+          pointer-events: none;
+          opacity: 0.5;
         }
 
         & svg {
@@ -339,12 +327,12 @@ function SelectItem({
         }
 
         & svg:not([class*='size-']) {
-          width: 1rem; /* size-4 */
-          height: 1rem; /* size-4 */
+          width: 1rem;
+          height: 1rem;
         }
 
         & svg:not([class*='text-']) {
-          color: var(--muted-foreground); /* text-muted-foreground */
+          color: var(--muted-foreground);
         }
 
         & span:last-child {
@@ -358,17 +346,22 @@ function SelectItem({
     >
       <span
         css={css`
-          position: absolute; /* absolute */
-          right: 0.5rem; /* right-2 */
-          display: flex; /* flex */
-          width: 0.875rem; /* size-3.5 */
-          height: 0.875rem; /* size-3.5 */
-          align-items: center; /* items-center */
-          justify-content: center; /* justify-center */
+          position: absolute;
+          right: 0.5rem;
+          display: flex;
+          width: 0.875rem;
+          height: 0.875rem;
+          align-items: center;
+          justify-content: center;
+
+          & > svg {
+            width: 0.875rem;
+            height: 0.875rem;
+          }
         `}
       >
         <SelectPrimitive.ItemIndicator>
-          <CheckIcon className='size-4' />
+          <CheckIcon />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -384,13 +377,13 @@ function SelectSeparator({
     <SelectPrimitive.Separator
       data-slot='select-separator'
       css={css`
-        pointer-events: none; /* pointer-events-none */
-        margin-left: -0.25rem; /* -mx-1 */
-        margin-right: -0.25rem; /* -mx-1 */
-        margin-top: 0.25rem; /* my-1 */
-        margin-bottom: 0.25rem; /* my-1 */
-        height: 1px; /* h-px */
-        background-color: var(--border); /* bg-border */
+        pointer-events: none;
+        margin-left: -0.25rem;
+        margin-right: -0.25rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        height: 1px;
+        background-color: var(--border);
       `}
       className={className}
       {...props}
@@ -406,17 +399,22 @@ function SelectScrollUpButton({
     <SelectPrimitive.ScrollUpButton
       data-slot='select-scroll-up-button'
       css={css`
-        display: flex; /* flex */
-        cursor: default; /* cursor-default */
-        align-items: center; /* items-center */
-        justify-content: center; /* justify-center */
-        padding-top: 0.25rem; /* py-1 */
-        padding-bottom: 0.25rem; /* py-1 */
+        display: flex;
+        cursor: default;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+
+        & > svg {
+          width: 0.875rem;
+          height: 0.875rem;
+        }
       `}
       className={className}
       {...props}
     >
-      <ChevronUpIcon className='size-4' />
+      <ChevronUpIcon />
     </SelectPrimitive.ScrollUpButton>
   );
 }
@@ -429,17 +427,22 @@ function SelectScrollDownButton({
     <SelectPrimitive.ScrollDownButton
       data-slot='select-scroll-down-button'
       css={css`
-        display: flex; /* flex */
-        cursor: default; /* cursor-default */
-        align-items: center; /* items-center */
-        justify-content: center; /* justify-center */
-        padding-top: 0.25rem; /* py-1 */
-        padding-bottom: 0.25rem; /* py-1 */
+        display: flex;
+        cursor: default;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+
+        & > svg {
+          width: 0.875rem;
+          height: 0.875rem;
+        }
       `}
       className={className}
       {...props}
     >
-      <ChevronDownIcon className='size-4' />
+      <ChevronDownIcon />
     </SelectPrimitive.ScrollDownButton>
   );
 }

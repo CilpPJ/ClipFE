@@ -16,7 +16,9 @@ const baseBadgeStyles = css`
   white-space: nowrap; /* whitespace-nowrap */
   flex-shrink: 0; /* shrink-0 */
   gap: 0.25rem; /* gap-1 */
-  transition: color, box-shadow; /* transition-[color,box-shadow] */
+  transition:
+    color 150ms,
+    box-shadow 150ms;
   overflow: hidden; /* overflow-hidden */
   outline: none; /* Implicit from no explicit outline */
 
@@ -70,9 +72,7 @@ const badgeVariantStyles = {
     background-color: var(--destructive); /* bg-destructive */
     color: white; /* text-white */
     &[as='a']:hover {
-      background-color: oklch(
-        var(--destructive-h) var(--destructive-s) var(--destructive-l) / 0.9
-      ); /* Destructive color with 90% opacity for hover */
+      background-color: color-mix(in srgb, var(--destructive) 90%, transparent);
     }
     &:focus-visible {
       box-shadow: 0 0 0 3px
