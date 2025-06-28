@@ -100,6 +100,7 @@ export default tseslint.config(
         },
       ],
       'react/react-in-jsx-scope': 'off',
+      'react/no-unknown-property': ['error', { ignore: ['css'] }],
     },
 
     // 설정 추가 (예: import-resolver)
