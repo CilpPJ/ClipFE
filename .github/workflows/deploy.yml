@@ -5,7 +5,7 @@ on:
     branches: ['main']
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET_NAME: clip
+  S3_BUCKET_NAME: clip-fe
 permissions:
   contents: read
 
