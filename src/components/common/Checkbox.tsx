@@ -12,14 +12,14 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot='checkbox'
       css={css`
-        width: 1rem; /* size-4 */
-        height: 1rem; /* size-4 */
-        flex-shrink: 0; /* shrink-0 */
-        border-radius: 4px; /* rounded-[4px] */
-        border: 1px solid var(--input); /* border border-input */
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-xs */
-        transition: box-shadow; /* transition-shadow */
-        outline: none; /* outline-none */
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+        border-radius: 4px;
+        border: 1px solid var(--input);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        transition: box-shadow;
+        outline: none;
 
         &:focus-visible {
           border-color: var(--ring);
