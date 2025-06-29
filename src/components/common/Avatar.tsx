@@ -11,13 +11,13 @@ function Avatar({
     <AvatarPrimitive.Root
       data-slot='avatar'
       css={css`
-        position: relative; /* relative */
-        display: flex; /* flex */
-        width: 2rem; /* size-8 (32px) */
-        height: 2rem; /* size-8 (32px) */
-        flex-shrink: 0; /* shrink-0 */
-        overflow: hidden; /* overflow-hidden */
-        border-radius: 9999px; /* rounded-full */
+        position: relative;
+        display: flex;
+        width: 2rem;
+        height: 2rem;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 9999px;
       `}
       className={className}
       {...props}
@@ -33,9 +33,9 @@ function AvatarImage({
     <AvatarPrimitive.Image
       data-slot='avatar-image'
       css={css`
-        aspect-ratio: 1 / 1; /* aspect-square */
-        width: 100%; /* size-full */
-        height: 100%; /* size-full */
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        height: 100%;
       `}
       className={className}
       {...props}
@@ -51,13 +51,13 @@ function AvatarFallback({
     <AvatarPrimitive.Fallback
       data-slot='avatar-fallback'
       css={css`
-        display: flex; /* flex */
-        width: 100%; /* size-full */
-        height: 100%; /* size-full */
-        align-items: center; /* items-center */
-        justify-content: center; /* justify-content */
-        border-radius: 9999px; /* rounded-full */
-        background-color: var(--muted); /* bg-muted */
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background-color: var(--muted);
       `}
       className={className}
       {...props}

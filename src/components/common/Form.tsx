@@ -84,10 +84,10 @@ function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
       <div
         data-slot='form-item'
         css={css`
-          display: grid; /* grid */
-          gap: 0.5rem; /* gap-2 (8px) */
+          display: grid;
+          gap: 0.5rem;
         `}
-        className={className} // 외부 className은 Emotion이 자동으로 병합합니다.
+        className={className}
         {...props}
       />
     </FormItemContext.Provider>
@@ -106,7 +106,7 @@ function FormLabel({
       data-error={!!error}
       css={css`
         &[data-error='true'] {
-          color: var(--destructive); /* data-[error=true]:text-destructive */
+          color: var(--destructive);
         }
       `}
       className={className}
@@ -147,8 +147,8 @@ function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
       data-slot='form-description'
       id={formDescriptionId}
       css={css`
-        font-size: 0.875rem; /* text-sm */
-        color: var(--muted-foreground); /* text-muted-foreground */
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
       `}
       className={className}
       {...props}
@@ -169,8 +169,8 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
       data-slot='form-message'
       id={formMessageId}
       css={css`
-        font-size: 0.875rem; /* text-sm */
-        color: var(--destructive); /* text-destructive */
+        font-size: 0.875rem;
+        color: var(--destructive);
       `}
       className={className}
       {...props}

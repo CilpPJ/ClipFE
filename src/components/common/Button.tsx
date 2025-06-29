@@ -44,7 +44,6 @@ const buttonStyles = ({ variant, size, className }: ButtonProps) => css`
       color-mix(in srgb, var(--destructive) 40%, transparent);
   }
 
-  /* Variant Styles */
   ${variant === 'default' &&
   css`
     background-color: var(--primary);

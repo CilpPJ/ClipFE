@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Spinner } from '../common';
+import { Spinner } from '../../common';
 
 export const LoadingView = () => {
   return (
