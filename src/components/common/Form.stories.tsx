@@ -208,7 +208,7 @@ export const FormWithSelect: Story = {
 
     await userEvent.type(
       canvas.getByPlaceholderText('google@gmail.com'),
-      'test@gmail.com',
+      'google@gmail.com',
     );
     await userEvent.click(canvas.getByRole('combobox'));
     await userEvent.click(
