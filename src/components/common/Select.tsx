@@ -83,7 +83,7 @@ function SelectTrigger({
         border-radius: 0.375rem;
         border: 1px solid var(--input);
         background-color: transparent;
-        padding: 0.5rem 0.75rem;
+        padding: 0 0.75rem;
         font-size: 0.875rem;
         white-space: nowrap;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
