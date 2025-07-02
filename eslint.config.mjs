@@ -60,6 +60,7 @@ export default tseslint.config(// 기본 설정 옵션
     'jsx-a11y': jsxA11y, // 웹 접근성 관련 규칙
     'unused-imports': unusedImports, // 사용하지 않는 import 제거
     prettier: prettier, // Prettier 규칙
+    storybook: storybook, // Storybook 관련 규칙
   },
 
   // 규칙 설정
