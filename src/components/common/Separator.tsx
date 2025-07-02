@@ -17,19 +17,17 @@ function Separator({
       decorative={decorative}
       orientation={orientation}
       css={css`
-        flex-shrink: 0; /* shrink-0 */
-        background-color: var(--border); /* bg-border */
+        flex-shrink: 0;
+        background-color: var(--border);
 
-        /* data-[orientation=horizontal] */
         &[data-orientation='horizontal'] {
-          height: 1px; /* h-px */
-          width: 100%; /* w-full */
+          height: 1px;
+          width: 100%;
         }
 
-        /* data-[orientation=vertical] */
         &[data-orientation='vertical'] {
-          height: 100%; /* h-full */
-          width: 1px; /* w-px */
+          height: 100%;
+          width: 1px;
         }
       `}
       className={className}

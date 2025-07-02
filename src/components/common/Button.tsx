@@ -121,10 +121,6 @@ const buttonStyles = ({ variant, size, className }: ButtonProps) => css`
   ${size === 'default' &&
   css`
     height: 2.25rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   `}
@@ -133,8 +129,6 @@ const buttonStyles = ({ variant, size, className }: ButtonProps) => css`
     height: 2rem;
     border-radius: 0.375rem;
     gap: 0.375rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
     padding-left: 0.625rem;
     padding-right: 0.625rem;
   `}
