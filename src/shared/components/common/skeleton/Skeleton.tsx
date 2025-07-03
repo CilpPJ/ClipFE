@@ -30,9 +30,9 @@ const StyledSkeleton = styled.div<SkeletonProps>`
     variant === 'circle' ? '50%' : '0.375rem'};
 `;
 
-export const Skeleton = React.forwardRef<HTMLElement, SkeletonProps>(
-  ({ ...props }) => {
-    return <StyledSkeleton {...props} />;
+export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
+  ({ ...props }, ref) => {
+    return <StyledSkeleton ref={ref} {...props} />;
   },
 );
 
