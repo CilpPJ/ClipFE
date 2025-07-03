@@ -6,16 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from '@storybook/test';
 import { z } from 'zod';
 
-import { Button } from '../common/Button';
-import { Input } from '../common/Input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../common/Select';
-
+import { Button } from './Button';
 import {
   Form,
   FormControl,
@@ -25,6 +16,14 @@ import {
   FormLabel,
   FormMessage,
 } from './Form';
+import { Input } from './Input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './Select';
 
 const meta: Meta<typeof Form> = {
   title: 'Components/Common/Form',

@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-// 제공해주신 Select 컴포넌트들을 import 합니다.
 import {
   Select,
   SelectContent,
@@ -16,7 +15,7 @@ import {
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Common/Select',
-  component: Select, // 메인 컴포넌트를 지정합니다.
+  component: Select,
   parameters: {
     layout: 'centered',
   },
