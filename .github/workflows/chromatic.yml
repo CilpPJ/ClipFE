@@ -4,6 +4,8 @@ on: push
 
 jobs:
   storybook-test:
+    outputs:
+      status: ${{ job.status }}
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +35,7 @@ jobs:
       - name: comment PR
         uses: thollander/actions-comment-pull-request@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: |
             🚀  Storybook 테스트가 완료되었습니다.
