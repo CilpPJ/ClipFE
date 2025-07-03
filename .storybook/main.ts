@@ -17,5 +17,6 @@ const config: StorybookConfig = {
     ...options,
     plugins: [...(options.plugins || []), '@emotion/babel-plugin'],
   }),
+  staticDirs: [{ from: '../public/fonts', to: '/fonts' }],
 };
 export default config;

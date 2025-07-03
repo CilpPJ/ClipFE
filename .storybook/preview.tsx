@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { Preview } from '@storybook/react-vite';
 
 import '../src/index.css';
@@ -12,14 +14,21 @@ const preview: Preview = {
       },
       exclude: ['role'],
     },
-
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
       test: 'todo',
     },
   },
+  decorators: [
+    (Story: any) => (
+      <div
+        style={{
+          fontFamily: `'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', 'Nanum Gothic', '나눔고딕', 'Noto Sans KR', '돋움', Dotum, Arial, sans-serif`,
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
