@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 
 import App from './App.tsx';
 import './index.css';
-import './styles/font/fonts.css';
-import './styles/reset.css';
+import './shared/styles/font/fonts.css';
+import './shared/theme/reset.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

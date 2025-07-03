@@ -1,9 +1,8 @@
 import { Global } from '@emotion/react';
 
-import { Toaster } from './components';
-import { ApplicationProvider } from './providers';
-import { Routes } from './routes';
-import { globalStyles } from './styles';
+import { ApplicationProvider } from './app/providers';
+import { Routes } from './app/routes';
+import { Toaster, globalStyles } from './shared';
 
 function App() {
   return (
