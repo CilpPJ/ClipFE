@@ -97,7 +97,7 @@ const getInputVariantStyles = (variant: InputProps['variant']) => {
   return '';
 };
 
-interface InputProps extends React.ComponentProps<'input'> {
+export interface InputProps extends React.ComponentProps<'input'> {
   variant?: 'default' | 'underline';
 }
 
