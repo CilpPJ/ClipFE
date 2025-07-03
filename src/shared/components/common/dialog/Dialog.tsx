@@ -1,66 +1,60 @@
 import * as React from 'react';
 
-import { css } from '@emotion/react';
+import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 
-const fadeIn = css`
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-`;
-
-const fadeOut = css`
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-`;
-
-const zoomIn = css`
-  @keyframes zoomIn {
-    from {
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-    to {
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-`;
-
-const zoomOut = css`
-  @keyframes zoomOut {
-    from {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    to {
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-  }
-`;
+const DialogAnimations = () => (
+  <Global
+    styles={css`
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          transform: translate(-50%, -50%) scale(0.95);
+        }
+        to {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+      @keyframes zoomOut {
+        from {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        to {
+          transform: translate(-50%, -50%) scale(0.95);
+        }
+      }
+    `}
+  />
+);
 
 const StyledDialogOverlay = styled(DialogPrimitive.Overlay)`
   position: fixed;
   inset: 0;
   z-index: 50;
   background-color: oklch(0 0 0 / 0.5);
-  transition: opacity 200ms ease-out;
 
   &[data-state='closed'] {
-    animation: ${fadeOut} 200ms ease-out forwards;
+    animation: fadeOut 200ms ease-out forwards;
   }
   &[data-state='open'] {
-    animation: ${fadeIn} 200ms ease-in forwards;
+    animation: fadeIn 200ms ease-in forwards;
   }
 `;
 
@@ -81,17 +75,16 @@ const StyledDialogContent = styled(DialogPrimitive.Content)`
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 200ms ease-out;
 
   &[data-state='closed'] {
     animation:
-      ${fadeOut} 200ms ease-out forwards,
-      ${zoomOut} 200ms ease-out forwards;
+      fadeOut 200ms ease-out forwards,
+      zoomOut 200ms ease-out forwards;
   }
   &[data-state='open'] {
     animation:
-      ${fadeIn} 200ms ease-in forwards,
-      ${zoomIn} 200ms ease-in forwards;
+      fadeIn 200ms ease-in forwards,
+      zoomIn 200ms ease-in forwards;
   }
 
   @media (min-width: 640px) {
@@ -175,7 +168,12 @@ const StyledDialogDescription = styled(DialogPrimitive.Description)`
 export function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
-  return <DialogPrimitive.Root data-slot='dialog' {...props} />;
+  return (
+    <>
+      <DialogAnimations />
+      <DialogPrimitive.Root data-slot='dialog' {...props} />
+    </>
+  );
 }
 
 export function DialogTrigger({
