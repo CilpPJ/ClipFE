@@ -3,7 +3,7 @@ import React from 'react';
 import type { Preview } from '@storybook/react-vite';
 
 import '../src/index.css';
-import '../src/styles/reset.css';
+import '../src/shared/theme/reset.css';
 
 const preview: Preview = {
   parameters: {
