@@ -7,7 +7,6 @@ import { EyeClosedIcon, EyeIcon } from 'lucide-react';
 import { Button } from './Button';
 import { Input } from './Input';
 
-// --- 기존 meta 객체 (위에서 수정한 버전) ---
 const meta: Meta<typeof Input> = {
   title: 'Components/Common/Input',
   component: Input,

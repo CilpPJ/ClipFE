@@ -32,6 +32,7 @@ export default tseslint.config(// 기본 설정 옵션
     '**/*.config.ts',
     '**/*.config.mjs',
     '**/*.config.cjs',
+    '.storybook',
   ],
 }, {
   // 확장 규칙 설정

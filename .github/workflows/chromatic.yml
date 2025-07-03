@@ -1,0 +1,45 @@
+name: Storybook Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  storybook-test:
+    outputs:
+      status: ${{ job.status }}
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - uses: chromaui/action@latest
+        id: chromatic
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+
+      - name: comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: |
+            🚀  Storybook 테스트가 완료되었습니다.
+            🔗  ${{ steps.chromatic.outputs.storybookUrl }}

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AlertCircle } from 'lucide-react';
 import { Toaster, toast } from 'sonner';
 
-import { Button } from '../common';
+import { Button } from './Button';
 
 const meta: Meta = {
   title: 'Components/Common/Sonner',

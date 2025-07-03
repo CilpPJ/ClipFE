@@ -1,14 +1,10 @@
 import { css } from '@emotion/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Button } from '../common/Button';
-import { Label } from '../common/Label';
-
+import { Button } from './Button';
+import { Label } from './Label';
 import { Textarea } from './Textarea';
 
-/**
- * 여러 줄의 텍스트를 입력받을 수 있는 폼 컨트롤입니다.
- */
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Common/Textarea',
   component: Textarea,
