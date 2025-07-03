@@ -22,11 +22,7 @@ export const UserIdField = () => {
         <FormItem>
           <FormLabel>아이디</FormLabel>
           <FieldWrapper>
-            <Input
-              {...field}
-              placeholder='아이디를 입력하세요'
-              value={field.value}
-            />
+            <Input {...field} placeholder='아이디를 입력하세요' />
           </FieldWrapper>
           <FormMessage />
         </FormItem>
