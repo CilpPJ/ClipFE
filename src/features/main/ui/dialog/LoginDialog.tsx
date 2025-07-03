@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled from '@emotion/styled';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 import type { LoginSchemaType } from '@/entities';
 import { loginSchema } from '@/entities';
@@ -29,10 +30,12 @@ export const LoginDialog = () => {
       });
     },
     onSuccess: () => {
-      console.log('login success');
+      toast.success('로그인 성공!');
+
+      form.reset();
     },
     onError: () => {
-      console.log('login error');
+      toast.error('로그인 실패..');
     },
   });
 
@@ -46,8 +49,6 @@ export const LoginDialog = () => {
 
   const onSubmit = (data: LoginSchemaType) => {
     loginMutate(data);
-
-    form.reset();
   };
 
   return (
