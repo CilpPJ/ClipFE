@@ -9,7 +9,7 @@ function App() {
     <ApplicationProvider>
       <Global styles={globalStyles} />
       <Routes />
-      <Toaster />
+      <Toaster position='top-center' richColors />
     </ApplicationProvider>
   );
 }
