@@ -5,8 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import type { LoginSchemaType } from '@/entities';
-import { loginSchema } from '@/entities';
+import type { SignupSchemaType } from '@/entities';
+import { signupSchema } from '@/entities';
 import {
   Button,
   Dialog,
@@ -16,59 +16,64 @@ import {
   DialogHeader,
   DialogTitle,
   Form,
-  authStorage,
 } from '@/shared';
 
-import { loginAPI } from '../../apis';
-import { LoginButton, PasswordField, UserIdField } from '../../components';
+import { signupAPI } from '../../apis';
+import {
+  NicknameField,
+  SignupButton,
+  SignupConfirmPasswordField,
+  SignupPasswordField,
+  UserIdField,
+} from '../../components';
 
-export const LoginDialog = () => {
-  const { mutate: loginMutate } = useMutation({
-    mutationFn: async (data: LoginSchemaType) => {
-      return loginAPI({
+export const SignupDialog = () => {
+  const { mutate: signupMutate } = useMutation({
+    mutationFn: async (data: SignupSchemaType) => {
+      return signupAPI({
         userId: data.userId,
         password: data.password,
+        nickName: data.nickName,
       });
     },
-    onSuccess: (response) => {
-      authStorage.access.set(response.accessToken);
-      authStorage.refresh.set(response.refreshToken);
-
-      toast.success('로그인 성공!');
+    onSuccess: () => {
+      toast.success('회원가입 성공!');
 
       form.reset();
     },
-    onError: (error) => {
-      console.log(error);
-      toast.error('로그인 실패..');
-      console.log('로그인 실패..');
+    onError: () => {
+      toast.error('회원가입 실패..');
     },
   });
 
-  const form = useForm<LoginSchemaType>({
-    resolver: zodResolver(loginSchema),
+  const form = useForm<SignupSchemaType>({
+    resolver: zodResolver(signupSchema),
     defaultValues: {
       userId: '',
       password: '',
+      confirmPassword: '',
+      nickName: '',
     },
   });
 
-  const onSubmit = (data: LoginSchemaType) => {
-    loginMutate(data);
+  const onSubmit = (data: SignupSchemaType) => {
+    signupMutate(data);
   };
 
   return (
     <Dialog>
       <Form {...form}>
         <form onSubmit={(e) => e.preventDefault()}>
-          <LoginButton />
+          <SignupButton />
           <DialogContentContainer>
             <DialogHeader>
-              <DialogTitle>로그인</DialogTitle>
+              <DialogTitle>회원가입</DialogTitle>
             </DialogHeader>
             <FieldContainer>
               <UserIdField />
-              <PasswordField />
+              <SignupPasswordField />
+              <SignupConfirmPasswordField />
+              <NicknameField />
             </FieldContainer>
             <DialogFooter>
               <ButtonContainer>
@@ -77,7 +82,7 @@ export const LoginDialog = () => {
                   disabled={!form.formState.isValid}
                   onClick={form.handleSubmit(onSubmit)}
                 >
-                  로그인
+                  회원가입
                 </Button>
                 <DialogClose asChild>
                   <Button variant='outline'>취소</Button>
