@@ -1,3 +1,5 @@
+import { CookiesProvider } from 'react-cookie';
+
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -9,9 +11,11 @@ type Props = {
 
 export const ApplicationProvider = ({ children }: Props) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      <ReactQueryDevtools initialIsOpen={true} />
-    </QueryClientProvider>
+    <CookiesProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
+    </CookiesProvider>
   );
 };
