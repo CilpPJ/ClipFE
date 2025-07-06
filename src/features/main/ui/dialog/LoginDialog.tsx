@@ -31,8 +31,8 @@ export const LoginDialog = () => {
       });
     },
     onSuccess: (response) => {
-      authStorage.accessToken.set(response.accessToken);
-      authStorage.refreshToken.set(response.refreshToken);
+      authStorage.access.set(response.accessToken);
+      authStorage.refresh.set(response.refreshToken);
 
       toast.success('로그인 성공!');
 

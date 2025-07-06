@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Cookies } from 'react-cookie';
 
 type StorageKey = {
@@ -8,7 +7,16 @@ type StorageKey = {
 
 const cookies = new Cookies();
 
-const setCookie = (name: string, value: string, option?: any) => {
+const setCookie = (
+  name: string,
+  value: string,
+  option?: {
+    path?: string;
+    secure?: boolean;
+    httpOnly?: boolean;
+    sameSite?: boolean | 'lax' | 'strict' | 'none';
+  },
+) => {
   return cookies.set(name, value, option);
 };
 
@@ -32,13 +40,13 @@ const initCookieStorage = <T extends keyof StorageKey>(key: T) => {
     if (value === undefined || value === null) {
       return removeCookie(storageKey);
     }
-    setCookie(storageKey, String(value));
+    setCookie(storageKey, String(value), { path: '/' });
   };
 
   return { get, set };
 };
 
 export const authStorage = {
-  accessToken: initCookieStorage('access'),
-  refreshToken: initCookieStorage('refresh'),
+  access: initCookieStorage('access'),
+  refresh: initCookieStorage('refresh'),
 };
