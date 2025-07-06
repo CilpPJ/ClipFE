@@ -16,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
   Form,
+  authStorage,
 } from '@/shared';
 
 import { loginAPI } from '../../apis';
@@ -29,13 +30,18 @@ export const LoginDialog = () => {
         password: data.password,
       });
     },
-    onSuccess: () => {
+    onSuccess: (response) => {
+      authStorage.accessToken.set(response.accessToken);
+      authStorage.refreshToken.set(response.refreshToken);
+
       toast.success('로그인 성공!');
 
       form.reset();
     },
-    onError: () => {
+    onError: (error) => {
+      console.log(error);
       toast.error('로그인 실패..');
+      console.log('로그인 실패..');
     },
   });
 
