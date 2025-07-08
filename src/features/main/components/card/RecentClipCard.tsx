@@ -8,12 +8,7 @@ type Props = {
   memo: string;
 };
 
-export const RecentClipCardSection = ({
-  thumbnail,
-  tag,
-  title,
-  memo,
-}: Props) => {
+export const RecentClipCard = ({ thumbnail, tag, title, memo }: Props) => {
   return (
     <RecentClipList>
       <ThumbnailWrapper>
