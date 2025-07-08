@@ -20,7 +20,7 @@ export const globalStyles = css`
     width: 100%;
     flex-direction: column;
     max-width: 480px;
-    background-color: var(--background);
+    background-color: var(--background-primary);
     font-family: var(--font-pretendard);
     color: var(--foreground);
 
