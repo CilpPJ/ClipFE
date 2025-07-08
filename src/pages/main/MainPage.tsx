@@ -1,22 +1,29 @@
 import styled from '@emotion/styled';
 
-import { LoginDialog, SignupDialog } from '@/features';
-
-const Container = styled.div`
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  height: 100%;
-  padding: 1rem 0;
-  align-items: center;
-  justify-content: center;
-`;
+import {
+  DescriptionSection,
+  FriendListSection,
+  RecentClipSection,
+} from '@/features';
+import { HEADER_HEIGHT, NavigateBarHeight } from '@/shared';
 
 export default function MainPage() {
   return (
-    <Container>
-      <LoginDialog />
-      <SignupDialog />
-    </Container>
+    <MainPageLayout>
+      <DescriptionSection />
+      <RecentClipSection />
+      <FriendListSection />
+    </MainPageLayout>
   );
 }
+
+const MainPageLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  width: 100%;
+  height: calc(100dvh - ${HEADER_HEIGHT}px);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: calc(${NavigateBarHeight}px + 2rem);
+`;

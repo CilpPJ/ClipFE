@@ -5,28 +5,25 @@ import {
   ClipDetailPage,
   ClipPage,
   FriendPage,
-  LoginPage,
   MainPage,
   SearchPage,
   SettingPage,
-  SignupPage,
   SummaryPage,
 } from '@/pages';
 import { ROUTER_PATH } from '@/shared';
+import { Layout } from '@/widgets';
 
 const router = createBrowserRouter(
   [
     {
       path: ROUTER_PATH.MAIN,
-      element: <MainPage />,
-    },
-    {
-      path: ROUTER_PATH.LOGIN,
-      element: <LoginPage />,
-    },
-    {
-      path: ROUTER_PATH.SIGNUP,
-      element: <SignupPage />,
+      element: <Layout />,
+      children: [
+        {
+          path: ROUTER_PATH.MAIN,
+          element: <MainPage />,
+        },
+      ],
     },
     {
       path: ROUTER_PATH.CLIP,
