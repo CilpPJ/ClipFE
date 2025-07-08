@@ -2,7 +2,13 @@ import { Outlet } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
-import { HEADER_HEIGHT, Header, NavigateBar, ScrollToTop } from '@/shared';
+import {
+  HEADER_HEIGHT,
+  Header,
+  NavigateBar,
+  NavigateBarHeight,
+  ScrollToTop,
+} from '@/shared';
 
 export const Layout = () => {
   return (
@@ -29,6 +35,7 @@ const PageContainer = styled.div`
   top: 0;
   left: 0;
   margin-top: ${HEADER_HEIGHT}px;
+  padding-bottom: ${NavigateBarHeight}px;
   width: 100%;
   display: flex;
   flex-direction: column;

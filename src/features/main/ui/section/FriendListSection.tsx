@@ -65,6 +65,7 @@ const FriendListContainer = styled.div`
   gap: 1rem;
   width: 100%;
   padding: 10px 0;
+  justify-items: center;
 `;
 
 const FriendListCard = styled.div`

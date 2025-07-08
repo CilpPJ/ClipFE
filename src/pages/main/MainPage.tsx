@@ -5,7 +5,6 @@ import {
   FriendListSection,
   RecentClipSection,
 } from '@/features';
-import { HEADER_HEIGHT, NavigateBarHeight } from '@/shared';
 
 export default function MainPage() {
   return (
@@ -22,8 +21,6 @@ const MainPageLayout = styled.div`
   flex-direction: column;
   padding: 0 1rem;
   width: 100%;
-  height: calc(100dvh - ${HEADER_HEIGHT}px);
   align-items: center;
   justify-content: center;
-  margin-bottom: calc(${NavigateBarHeight}px + 2rem);
 `;
