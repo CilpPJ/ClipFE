@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { FolderSearch, Home, Paperclip, Plus, UserSearch } from 'lucide-react';
 
-import { ROUTER_PATH } from '@/shared';
+import { ROUTER_PATH } from '../../../constants';
 
 type Tab = 'HOME' | 'CLIP' | 'SEARCH' | 'FRIEND';
 
@@ -22,7 +22,7 @@ const BUTTON_LIST: ButtonItem[] = [
     tab: 'HOME',
     icon: Home,
     text: 'HOME',
-    path: ROUTER_PATH.MAIN,
+    path: ROUTER_PATH.ROOT,
   },
   {
     tab: 'CLIP',
