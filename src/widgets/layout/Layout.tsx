@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 import {
   HEADER_HEIGHT,
   Header,
+  NAVIGATE_BAR_HEIGHT,
   NavigateBar,
-  NavigateBarHeight,
   ScrollToTop,
 } from '@/shared';
 
@@ -35,7 +35,7 @@ const PageContainer = styled.div`
   top: 0;
   left: 0;
   margin-top: ${HEADER_HEIGHT}px;
-  padding-bottom: ${NavigateBarHeight}px;
+  padding-bottom: ${NAVIGATE_BAR_HEIGHT}px;
   width: 100%;
   display: flex;
   flex-direction: column;
