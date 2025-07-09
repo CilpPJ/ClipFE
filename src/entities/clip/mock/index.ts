@@ -1,1 +1,1 @@
-export * from './recent-clip-card.mock';
+export * from './data';
