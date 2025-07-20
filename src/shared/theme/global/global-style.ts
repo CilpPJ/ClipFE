@@ -14,18 +14,11 @@ export const globalStyles = css`
   }
 
   body {
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     width: 100%;
     flex-direction: column;
-    max-width: 480px;
     background-color: var(--background-primary);
     font-family: var(--font-pretendard);
     color: var(--foreground);
-
-    @media (width >= 768px) {
-      max-width: 768px;
-    }
   }
 `;

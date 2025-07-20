@@ -1,2 +1,2 @@
 export * from './auth';
-export * from './clip-card';
+export * from './clip';

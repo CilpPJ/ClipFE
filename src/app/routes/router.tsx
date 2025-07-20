@@ -5,6 +5,7 @@ import {
   ClipDetailPage,
   ClipPage,
   FriendPage,
+  LoginPage,
   MainPage,
   SearchPage,
   SettingPage,
@@ -24,6 +25,10 @@ const router = createBrowserRouter(
           element: <MainPage />,
         },
       ],
+    },
+    {
+      path: ROUTER_PATH.LOGIN,
+      element: <LoginPage />,
     },
     {
       path: ROUTER_PATH.CLIP,

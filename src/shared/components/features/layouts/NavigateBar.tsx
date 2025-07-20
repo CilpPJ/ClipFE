@@ -1,14 +1,78 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { FolderSearch, Home, Paperclip, Plus, UserSearch } from 'lucide-react';
 
+import { ROUTER_PATH } from '../../../constants';
+
 type Tab = 'HOME' | 'CLIP' | 'SEARCH' | 'FRIEND';
 
-export const NavigateBarHeight = 90;
+export const NAVIGATE_BAR_HEIGHT = 90;
+
+type ButtonItem = {
+  tab: Tab;
+  icon: React.ElementType;
+  text: string;
+  path: string;
+};
+
+const BUTTON_LIST: ButtonItem[] = [
+  {
+    tab: 'HOME',
+    icon: Home,
+    text: 'HOME',
+    path: ROUTER_PATH.ROOT,
+  },
+  {
+    tab: 'CLIP',
+    icon: Paperclip,
+    text: 'CLIP',
+    path: ROUTER_PATH.CLIP,
+  },
+  {
+    tab: 'SEARCH',
+    icon: FolderSearch,
+    text: 'SEARCH',
+    path: ROUTER_PATH.SEARCH,
+  },
+  {
+    tab: 'FRIEND',
+    icon: UserSearch,
+    text: 'FRIEND',
+    path: ROUTER_PATH.FRIEND,
+  },
+];
 
 export const NavigateBar = () => {
   const [activeTab, setActiveTab] = useState<Tab>('HOME');
+
+  const navigate = useNavigate();
+
+  const onClickButton = (tab: Tab) => {
+    setActiveTab(tab);
+
+    navigate(BUTTON_LIST.find((button) => button.tab === tab)?.path ?? '');
+  };
+
+  const renderNavItems = (buttons: ButtonItem[]) => {
+    return buttons.map((button) => {
+      const Icon = button.icon;
+      const isActive = activeTab === button.tab;
+
+      return (
+        <NavItem
+          key={button.tab}
+          active={isActive}
+          onClick={() => onClickButton(button.tab)}
+        >
+          <Icon size={26} strokeWidth={1.5} />
+          <NavItemText active={isActive}>{button.text}</NavItemText>
+          {isActive && <ActiveIndicator />}
+        </NavItem>
+      );
+    });
+  };
 
   return (
     <NavContainer>
@@ -18,45 +82,11 @@ export const NavigateBar = () => {
 
       <Nav>
         <NavItemsWrapper>
-          <LeftItems>
-            <NavItem
-              active={activeTab === 'HOME'}
-              onClick={() => setActiveTab('HOME')}
-            >
-              <Home size={26} strokeWidth={1.5} />
-              <NavItemText active={activeTab === 'HOME'}>HOME</NavItemText>
-              {activeTab === 'HOME' && <ActiveIndicator />}
-            </NavItem>
-            <NavItem
-              active={activeTab === 'CLIP'}
-              onClick={() => setActiveTab('CLIP')}
-            >
-              <Paperclip size={26} strokeWidth={1.5} />
-              <NavItemText active={activeTab === 'CLIP'}>CLIP</NavItemText>
-              {activeTab === 'CLIP' && <ActiveIndicator />}
-            </NavItem>
-          </LeftItems>
+          <LeftItems>{renderNavItems(BUTTON_LIST.slice(0, 2))}</LeftItems>
 
           <CenterGap />
 
-          <RightItems>
-            <NavItem
-              active={activeTab === 'SEARCH'}
-              onClick={() => setActiveTab('SEARCH')}
-            >
-              <FolderSearch size={26} strokeWidth={1.5} />
-              <NavItemText active={activeTab === 'SEARCH'}>SEARCH</NavItemText>
-              {activeTab === 'SEARCH' && <ActiveIndicator />}
-            </NavItem>
-            <NavItem
-              active={activeTab === 'FRIEND'}
-              onClick={() => setActiveTab('FRIEND')}
-            >
-              <UserSearch size={26} strokeWidth={1.5} />
-              <NavItemText active={activeTab === 'FRIEND'}>FRIEND</NavItemText>
-              {activeTab === 'FRIEND' && <ActiveIndicator />}
-            </NavItem>
-          </RightItems>
+          <RightItems>{renderNavItems(BUTTON_LIST.slice(2, 4))}</RightItems>
         </NavItemsWrapper>
       </Nav>
     </NavContainer>
@@ -71,7 +101,7 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: ${NavigateBarHeight}px;
+  height: ${NAVIGATE_BAR_HEIGHT}px;
 `;
 
 const Nav = styled.div`

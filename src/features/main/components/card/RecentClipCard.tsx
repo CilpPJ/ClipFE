@@ -30,7 +30,7 @@ const RecentClipList = styled.ul`
   display: flex;
   flex-direction: column;
   width: 174px;
-  height: 230px;
+  height: 210px;
   padding: 1rem;
   align-items: start;
   gap: 0.8rem;
@@ -63,6 +63,13 @@ const ItemTitle = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  box-orient: vertical;
 `;
 
 const TagWrapper = styled.div`
@@ -95,8 +102,8 @@ const ItemDescription = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  line-clamp: 2;
+  line-clamp: 1;
   box-orient: vertical;
 `;
