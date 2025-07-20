@@ -2,11 +2,21 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ChevronRight } from 'lucide-react';
 
-import { RECENT_CLIP_CARD_MOCK } from '@/entities';
+import { LoadingView } from '@/shared';
 
 import { RecentClipCard } from '../../components';
+import { useGetAllClips } from '../../hooks';
 
 export const RecentClipSection = () => {
+  const { data: recentClipsData } = useGetAllClips({
+    lastCreatedAt: '',
+    size: 10,
+  });
+
+  if (!recentClipsData) {
+    return <LoadingView />;
+  }
+
   return (
     <RecentClipBox>
       <RecentClipHeader>
@@ -20,13 +30,13 @@ export const RecentClipSection = () => {
         <ChevronRight />
       </RecentClipHeader>
       <RecentClipCardContainer>
-        {Array.from({ length: 10 }).map((_, index) => (
+        {recentClipsData.content.map((data, index) => (
           <RecentClipCard
             key={index}
-            thumbnail={RECENT_CLIP_CARD_MOCK.thumbnail}
-            tag={RECENT_CLIP_CARD_MOCK.tagName}
-            title={RECENT_CLIP_CARD_MOCK.title}
-            memo={RECENT_CLIP_CARD_MOCK.memo}
+            thumbnail={data.thumbnail}
+            tag={data.tagName}
+            title={data.title}
+            memo={data.memo}
           />
         ))}
       </RecentClipCardContainer>
