@@ -9,6 +9,7 @@ import {
   MainPage,
   SearchPage,
   SettingPage,
+  SignupPage,
   SummaryPage,
 } from '@/pages';
 import { ROUTER_PATH } from '@/shared';
@@ -29,6 +30,10 @@ const router = createBrowserRouter(
     {
       path: ROUTER_PATH.LOGIN,
       element: <LoginPage />,
+    },
+    {
+      path: ROUTER_PATH.SIGN_UP,
+      element: <SignupPage />,
     },
     {
       path: ROUTER_PATH.CLIP,
