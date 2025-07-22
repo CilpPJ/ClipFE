@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { SOCIAL_LOGIN_URL } from '@/shared';
+import { type Platform, SOCIAL_LOGIN_PATH } from '@/shared';
 
 import GOOGLE_SYMBOL from '../../../_assets/google-symbol.webp';
 import KAKAO_SYMBOL from '../../../_assets/kakao-symbol.webp';
 import NAVER_SYMBOL from '../../../_assets/naver-symbol.webp';
 
-type Variant = 'google' | 'naver' | 'kakao';
+type Variant = Platform;
 
 const socialAssetMap = {
   google: {
@@ -42,7 +42,7 @@ export const SocialLoginButton = ({ variant, ...props }: Props) => {
   return (
     <LoginButtonBox
       customStyles={styles}
-      href={SOCIAL_LOGIN_URL(variant)}
+      href={SOCIAL_LOGIN_PATH(variant)}
       {...props}
     >
       <LoginButtonIcon alt={`${variant} login`} src={icon} />
@@ -70,7 +70,8 @@ const LoginButtonBox = styled.a<{ customStyles: ReturnType<typeof css> }>`
 `;
 
 const LoginButtonIcon = styled.img`
+  display: block;
+
   width: 100%;
   height: 100%;
-  display: block;
 `;
