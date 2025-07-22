@@ -2,6 +2,9 @@
   --font-pretendard:
     'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Apple SD Gothic Neo', sans-serif;
+  --font-bnviitlasik:
+    'BnviitLasik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Apple SD Gothic Neo', sans-serif;
 
   --font-size-xxl: 2.5rem;
   --font-size-xl: 2rem;
