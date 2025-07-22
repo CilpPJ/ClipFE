@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -64,6 +64,10 @@ export const LoginForm = () => {
             로그인
           </ButtonItem>
         </ButtonContainer>
+        <TextBox>
+          <Text>아직 회원이 아니신가요?</Text>
+          <NavigateText to={ROUTER_PATH.SIGN_UP}>회원가입</NavigateText>
+        </TextBox>
       </FormBox>
     </Form>
   );
@@ -95,4 +99,25 @@ const ButtonContainer = styled.div`
 
 const ButtonItem = styled(Button)`
   width: 100%;
+`;
+
+const TextBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Text = styled.span`
+  font-size: 0.8rem;
+`;
+
+const NavigateText = styled(Link)`
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
