@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 
-import { LoginForm } from '@/entities';
+import { LoginForm, LoginTitleSection, SocialLoginSection } from '@/entities';
 
 export default function LoginPage() {
   return (
     <LoginPageLayout>
+      <LoginTitleSection />
       <LoginForm />
+      <SocialLoginSection />
     </LoginPageLayout>
   );
 }
@@ -18,4 +20,5 @@ const LoginPageLayout = styled.div`
   height: 100dvh;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 `;
