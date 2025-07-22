@@ -31,7 +31,9 @@ const SocialLoginBox = styled.div`
 const LoginWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: full;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 `;
 
