@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { Button, Form, Spinner } from '@/shared';
+import { Button, Form, ROUTER_PATH, Spinner } from '@/shared';
 
 import { signupAPI } from '../../apis';
 import { type SignupSchemaType, signupSchema } from '../../model';
@@ -56,8 +57,10 @@ export const SignupForm = () => {
       <FormBox onSubmit={(e) => e.preventDefault()}>
         <FieldContainer>
           <ConfirmUserIdField />
-          <SignupPasswordField />
-          <SignupConfirmPasswordField />
+          <PasswordFieldWrapper>
+            <SignupPasswordField />
+            <SignupConfirmPasswordField />
+          </PasswordFieldWrapper>
           <NicknameField />
         </FieldContainer>
         <ButtonContainer>
@@ -70,6 +73,10 @@ export const SignupForm = () => {
             {isPending ? <Spinner /> : '회원가입'}
           </ButtonItem>
         </ButtonContainer>
+        <TextBox>
+          <Text>이미 가입했다면?</Text>
+          <NavigateText to={ROUTER_PATH.LOGIN}>로그인</NavigateText>
+        </TextBox>
       </FormBox>
     </Form>
   );
@@ -101,4 +108,31 @@ const ButtonContainer = styled.div`
 
 const ButtonItem = styled(Button)`
   width: 100%;
+`;
+
+const TextBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Text = styled.span`
+  font-size: 0.8rem;
+`;
+
+const NavigateText = styled(Link)`
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const PasswordFieldWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
