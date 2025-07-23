@@ -58,6 +58,7 @@ export const LoginForm = () => {
         <ButtonContainer>
           <ButtonItem
             type='submit'
+            variant='secondary'
             disabled={!form.formState.isValid}
             onClick={form.handleSubmit(onSubmit)}
           >
@@ -87,7 +88,7 @@ const FieldContainer = styled.div`
   width: 20rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
 const ButtonContainer = styled.div`
@@ -99,6 +100,7 @@ const ButtonContainer = styled.div`
 
 const ButtonItem = styled(Button)`
   width: 100%;
+  color: #fff;
 `;
 
 const TextBox = styled.div`
