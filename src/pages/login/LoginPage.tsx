@@ -17,8 +17,7 @@ const LoginPageLayout = styled.div`
   flex-direction: column;
   padding: 0 1rem;
   width: 100%;
-  height: 100dvh;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.2rem;
 `;
