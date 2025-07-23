@@ -7,7 +7,7 @@ export const SocialLoginSection = () => {
     <SocialLoginBox>
       <SeparatorWrapper>
         <Line />
-        <Text>간편 로그인</Text>
+        <Text>간편로그인</Text>
         <Line />
       </SeparatorWrapper>
       <LoginWrapper>
