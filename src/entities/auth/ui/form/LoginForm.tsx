@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -58,12 +58,17 @@ export const LoginForm = () => {
         <ButtonContainer>
           <ButtonItem
             type='submit'
+            variant='secondary'
             disabled={!form.formState.isValid}
             onClick={form.handleSubmit(onSubmit)}
           >
             로그인
           </ButtonItem>
         </ButtonContainer>
+        <TextBox>
+          <Text>아직 회원이 아니신가요?</Text>
+          <NavigateText to={ROUTER_PATH.SIGN_UP}>회원가입</NavigateText>
+        </TextBox>
       </FormBox>
     </Form>
   );
@@ -73,7 +78,6 @@ const FormBox = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
@@ -84,7 +88,7 @@ const FieldContainer = styled.div`
   width: 20rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
 const ButtonContainer = styled.div`
@@ -96,4 +100,26 @@ const ButtonContainer = styled.div`
 
 const ButtonItem = styled(Button)`
   width: 100%;
+  color: #fff;
+`;
+
+const TextBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Text = styled.span`
+  font-size: 0.8rem;
+`;
+
+const NavigateText = styled(Link)`
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

@@ -43,3 +43,8 @@
   src: url('/fonts/Pretendard-Black.ttf') format('truetype');
   font-weight: 900;
 }
+
+@font-face {
+  font-family: 'BnviitLasik';
+  src: url('/fonts/BnviitLasik.ttf') format('truetype');
+}

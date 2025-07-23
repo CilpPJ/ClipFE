@@ -1,10 +1,8 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+import Clip_Logo from '@/shared/_assets/logo/clip_3d.webp';
+
 export const DescriptionSection = () => {
-  const onClickGhost = () => {
-    alert('👻 우헤헤! 👻');
-  };
   return (
     <DescriptionBox>
       <DescriptionContainer>
@@ -18,14 +16,7 @@ export const DescriptionSection = () => {
           <DescriptionText>기다리고 있어요!</DescriptionText>
         </DescriptionWrapper>
       </DescriptionContainer>
-      <span
-        css={css`
-          font-size: 5rem;
-        `}
-        onClick={onClickGhost}
-      >
-        👻
-      </span>
+      <LogoImage src={Clip_Logo} alt='Clip Logo' />
     </DescriptionBox>
   );
 };
@@ -51,4 +42,9 @@ const DescriptionText = styled.span`
 const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const LogoImage = styled.img`
+  width: 106px;
+  height: auto;
 `;

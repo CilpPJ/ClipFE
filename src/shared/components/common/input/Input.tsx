@@ -7,9 +7,9 @@ const baseInputStyles = css`
   height: 2.25rem;
   width: 100%;
   min-width: 0;
-  background-color: transparent;
+  background-color: #fff;
   padding: 0.25rem 0.75rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition:
     color 150ms,
     box-shadow 150ms;

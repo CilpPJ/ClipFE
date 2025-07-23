@@ -5,6 +5,7 @@ export const ROUTER_PATH = {
   CLIP: '/clip',
   CLIP_DETAIL: '/clip/:id',
   LOGIN: '/login',
+  SIGN_UP: '/signup',
   SEARCH: '/search',
   FRIEND: '/friend',
   SETTING: '/setting',

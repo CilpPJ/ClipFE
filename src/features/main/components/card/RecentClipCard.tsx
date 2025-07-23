@@ -59,7 +59,6 @@ const ThumbnailImage = styled.img`
 
 const ItemTitle = styled.div`
   width: 100%;
-  height: 100%;
   font-size: 16px;
   font-weight: 500;
   color: #000;
@@ -97,7 +96,6 @@ const DescriptionWrapper = styled.div`
 
 const ItemDescription = styled.div`
   width: 100%;
-  height: 100%;
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
