@@ -3,14 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import styled from '@emotion/styled';
 
 import type { SignupSchemaType } from '@/entities';
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-} from '@/shared';
+import { FormControl, FormField, FormItem, FormMessage, Input } from '@/shared';
 
 export const SignupConfirmPasswordField = () => {
   const form = useFormContext<SignupSchemaType>();
@@ -20,7 +13,6 @@ export const SignupConfirmPasswordField = () => {
       name='confirmPassword'
       render={({ field }) => (
         <FormItem>
-          <FormLabel>비밀번호 확인</FormLabel>
           <FieldWrapper>
             <Input
               {...field}
