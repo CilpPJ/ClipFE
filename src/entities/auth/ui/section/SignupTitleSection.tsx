@@ -24,8 +24,7 @@ const SignupTitleSectionBox = styled.div`
 const ImageItem = styled.img`
   width: 100px;
   height: 100px;
-  margin-bottom: 2rem;
-  object-fit: cover;
+  margin: 2rem 0;
 `;
 
 const TitleText = styled.p`
