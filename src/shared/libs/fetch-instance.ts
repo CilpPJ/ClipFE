@@ -1,6 +1,6 @@
 import { initInstance } from './axios-instance';
 
-export const BASE_URL = 'http://15.165.23.67';
+export const BASE_URL = 'https://www.clipin.store';
 
 export const fetchInstance = initInstance({
   baseURL: BASE_URL,
