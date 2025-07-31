@@ -20,7 +20,7 @@ export const NicknameField = () => {
   return (
     <FormField
       control={form.control}
-      name='nickName'
+      name='nickname'
       render={({ field }) => (
         <FormItem>
           <FormLabel>닉네임</FormLabel>
@@ -28,7 +28,7 @@ export const NicknameField = () => {
             <FieldWrapper>
               <Input {...field} placeholder='닉네임을 입력하세요' type='text' />
             </FieldWrapper>
-            <DuplicateCheckButton checkType='nickName' fieldName='nickName' />
+            <DuplicateCheckButton checkType='nickname' fieldName='nickname' />
           </FieldContainer>
           <FormMessage />
         </FormItem>

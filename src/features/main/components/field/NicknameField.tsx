@@ -17,7 +17,7 @@ export const NicknameField = () => {
   return (
     <FormField
       control={form.control}
-      name='nickName'
+      name='nickname'
       render={({ field }) => (
         <FormItem>
           <FormLabel>닉네임</FormLabel>

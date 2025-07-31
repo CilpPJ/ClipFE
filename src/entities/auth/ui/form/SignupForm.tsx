@@ -24,7 +24,7 @@ export const SignupForm = () => {
       confirmUserId: '',
       password: '',
       confirmPassword: '',
-      nickName: '',
+      nickname: '',
       isUserIdChecked: false,
       isNicknameChecked: false,
     },
@@ -36,7 +36,7 @@ export const SignupForm = () => {
       return signupAPI({
         confirmUserId: data.confirmUserId,
         password: data.password,
-        nickName: data.nickName,
+        nickname: data.nickname,
       });
     },
     onSuccess: () => {

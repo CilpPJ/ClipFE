@@ -1,19 +1,24 @@
 import { fetchInstance } from '@/shared';
 
 interface DuplicateNicknameAPIRequest {
-  nickName: string;
+  nickname: string;
 }
 
-export const DUPLICATE_NICKNAME_API_PATH = (nickName: string) =>
-  `/api/auth/check/duplicateId/${nickName}`;
+export interface DuplicateNicknameAPIResponse {
+  message: string;
+  duplicated: boolean;
+}
+
+export const DUPLICATE_NICKNAME_API_PATH = (nickname: string) =>
+  `/api/auth/check/duplicateId/${nickname}`;
 
 export const duplicateNicknameAPI = async ({
-  nickName,
+  nickname,
 }: DuplicateNicknameAPIRequest) => {
   const response = await fetchInstance.post(
-    DUPLICATE_NICKNAME_API_PATH(nickName),
+    DUPLICATE_NICKNAME_API_PATH(nickname),
     {
-      nickName,
+      nickname,
     },
   );
 
