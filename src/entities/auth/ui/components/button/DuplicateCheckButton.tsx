@@ -9,7 +9,7 @@ import { Button, Spinner } from '@/shared';
 import { useDuplicateIdCheck, useDuplicateNicknameCheck } from '../../../hooks';
 
 type Props = {
-  checkType: 'userId' | 'nickName';
+  checkType: 'userId' | 'nickname';
   fieldName: keyof SignupSchemaType;
 };
 

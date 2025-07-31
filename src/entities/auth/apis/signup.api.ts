@@ -5,18 +5,18 @@ export const SIGNUP_API_PATH = '/api/auth/signup';
 interface SignupAPIRequest {
   confirmUserId: string;
   password: string;
-  nickName: string;
+  nickname: string;
 }
 
 export const signupAPI = async ({
   confirmUserId,
   password,
-  nickName,
+  nickname,
 }: SignupAPIRequest) => {
   const response = await fetchInstance.post(SIGNUP_API_PATH, {
     confirmUserId,
     password,
-    nickName,
+    nickname,
   });
 
   return response.data;
