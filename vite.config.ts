@@ -1,6 +1,5 @@
 /// <reference types="vitest/config" />
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import basicSsl from '@vitejs/plugin-basic-ssl';
 import react from '@vitejs/plugin-react-swc';
 // https://vitejs.dev/config/
 import { fileURLToPath } from 'node:url';
@@ -18,7 +17,6 @@ export default defineConfig({
     react({
       jsxImportSource: '@emotion/react',
     }),
-    basicSsl(),
   ],
   resolve: {
     alias: {
@@ -53,14 +51,4 @@ export default defineConfig({
       },
     ],
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://www.clipin.store',
-        changeOrigin: true,
-        secure: false,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
-      }
-    }
-  }
 });
