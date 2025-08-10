@@ -6,16 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { type LoginSchemaType, loginAPI, loginSchema } from '@/entities';
-import {
-  type ApiResponse,
-  Button,
-  Form,
-  ROUTER_PATH,
-  type User,
-  useAuthStore,
-} from '@/shared';
+import { Button, Form, ROUTER_PATH, useAuthStore } from '@/shared';
 
+import { type LoginResponse, loginAPI } from '../../apis';
+import { type LoginSchemaType, loginSchema } from '../../model';
 import { PasswordField, UserIdField } from '../components';
 
 export const LoginForm = () => {
@@ -31,30 +25,28 @@ export const LoginForm = () => {
     },
   });
 
-  const onSuccess = (data: ApiResponse<User>) => {
-    if (data.status === 'SUCCESS') {
-      toast.success('로그인 성공!');
+  const onSuccess = (data: LoginResponse) => {
+    toast.success('로그인 성공!');
 
-      setNickname(data.data.nickname);
+    setNickname(data.nickname);
 
-      navigate(ROUTER_PATH.MAIN);
-      form.reset();
-    }
+    navigate(ROUTER_PATH.MAIN);
+    form.reset();
+  };
+
+  const onError = (error: Error) => {
+    toast.error(error.message || '로그인 실패..');
   };
 
   const { mutate: loginMutate } = useMutation({
-    mutationFn: async (data: LoginSchemaType) => {
+    mutationFn: (data: LoginSchemaType) => {
       return loginAPI({
         userId: data.userId,
         password: data.password,
       });
     },
     onSuccess,
-    onError: (error) => {
-      console.log(error);
-      toast.error('로그인 실패..');
-      console.log('로그인 실패..');
-    },
+    onError,
   });
 
   const onSubmit = (data: LoginSchemaType) => {
