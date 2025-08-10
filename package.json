@@ -43,8 +43,7 @@
     "react-hook-form": "^7.59.0",
     "react-router-dom": "6.28.0",
     "sonner": "^2.0.5",
-    "zod": "^3.25.67",
-    "zustand": "^5.0.6"
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
@@ -92,7 +91,8 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "zustand": "^5.0.6"
   },
   "msw": {
     "workerDirectory": [
