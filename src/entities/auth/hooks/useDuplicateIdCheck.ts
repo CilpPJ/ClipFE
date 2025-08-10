@@ -22,13 +22,13 @@ export const useDuplicateIdCheck = () => {
       } else {
         setValue('isUserIdChecked', true);
         toast.success(`'${variables}'는 사용 가능한 아이디입니다!`);
-        trigger('confirmUserId');
+        trigger('userId');
       }
     },
     // TODO: 에러코드에 따라 다른 메시지 출력
     onError: (error) => {
       setValue('isUserIdChecked', false);
-      trigger('confirmUserId');
+      trigger('userId');
       toast.error(error.message || '중복 확인 중 에러가 발생했습니다.');
     },
   });

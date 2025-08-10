@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const signupSchema = z
   .object({
-    confirmUserId: z.string().min(1, '아이디를 입력해주세요.'),
+    userId: z.string().min(1, '아이디를 입력해주세요.'),
     password: z.string().min(1, '비밀번호를 입력해주세요.'),
     confirmPassword: z.string().min(1, '비밀번호를 입력해주세요.'),
     nickname: z.string().min(1, '닉네임을 입력해주세요.'),
@@ -16,7 +16,7 @@ export const signupSchema = z
   })
   .refine((data) => data.isUserIdChecked, {
     message: '아이디 중복확인을 해주세요.',
-    path: ['confirmUserId'],
+    path: ['userId'],
   })
   .refine((data) => data.isNicknameChecked, {
     message: '닉네임 중복확인을 해주세요.',

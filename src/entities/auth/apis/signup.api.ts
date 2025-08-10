@@ -3,21 +3,21 @@ import { fetchInstance } from '@/shared';
 export const SIGNUP_API_PATH = '/api/auth/signup';
 
 interface SignupAPIRequest {
-  confirmUserId: string;
+  userId: string;
   password: string;
   nickname: string;
 }
 
 export const signupAPI = async ({
-  confirmUserId,
+  userId,
   password,
   nickname,
 }: SignupAPIRequest) => {
   const response = await fetchInstance.post(SIGNUP_API_PATH, {
-    confirmUserId,
+    userId,
     password,
     nickname,
   });
 
-  return response.data;
+  return response;
 };
