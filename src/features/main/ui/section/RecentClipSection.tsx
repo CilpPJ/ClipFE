@@ -17,6 +17,8 @@ export const RecentClipSection = () => {
     return <LoadingView />;
   }
 
+  const hasContent = (recentClipsData?.content?.length ?? 0) > 0;
+
   return (
     <RecentClipBox>
       <RecentClipHeader>
@@ -29,17 +31,24 @@ export const RecentClipSection = () => {
         </span>
         <ChevronRight />
       </RecentClipHeader>
-      <RecentClipCardContainer>
-        {recentClipsData.content.map((data, index) => (
-          <RecentClipCard
-            key={index}
-            thumbnail={data.thumbnail}
-            tag={data.tagName}
-            title={data.title}
-            memo={data.memo}
-          />
-        ))}
-      </RecentClipCardContainer>
+
+      {hasContent ? (
+        <RecentClipCardContainer>
+          {recentClipsData.content.map((data) => (
+            <RecentClipCard
+              key={data.tagId}
+              thumbnail={data.tagName}
+              tag={data.url}
+              title={data.title}
+              memo={data.memo}
+            />
+          ))}
+        </RecentClipCardContainer>
+      ) : (
+        <EmptyView>
+          <span>최근 저장한 클립이 없어요. 🧐</span>
+        </EmptyView>
+      )}
     </RecentClipBox>
   );
 };
@@ -74,4 +83,15 @@ const RecentClipCardContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const EmptyView = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 150px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  color: #888;
 `;
