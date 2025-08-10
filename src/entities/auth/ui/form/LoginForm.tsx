@@ -6,14 +6,41 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import type { LoginSchemaType } from '@/entities';
-import { loginAPI, loginSchema } from '@/entities';
-import { Button, Form, ROUTER_PATH } from '@/shared';
+import { type LoginSchemaType, loginAPI, loginSchema } from '@/entities';
+import {
+  type ApiResponse,
+  Button,
+  Form,
+  ROUTER_PATH,
+  type User,
+  useAuthStore,
+} from '@/shared';
 
 import { PasswordField, UserIdField } from '../components';
 
 export const LoginForm = () => {
+  const { setNickname } = useAuthStore();
+
   const navigate = useNavigate();
+
+  const form = useForm<LoginSchemaType>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      userId: '',
+      password: '',
+    },
+  });
+
+  const onSuccess = (data: ApiResponse<User>) => {
+    if (data.status === 'SUCCESS') {
+      toast.success('로그인 성공!');
+
+      setNickname(data.data.nickname);
+
+      navigate(ROUTER_PATH.MAIN);
+      form.reset();
+    }
+  };
 
   const { mutate: loginMutate } = useMutation({
     mutationFn: async (data: LoginSchemaType) => {
@@ -22,25 +49,11 @@ export const LoginForm = () => {
         password: data.password,
       });
     },
-    onSuccess: () => {
-      toast.success('로그인 성공!');
-
-      navigate(ROUTER_PATH.MAIN);
-
-      form.reset();
-    },
+    onSuccess,
     onError: (error) => {
       console.log(error);
       toast.error('로그인 실패..');
       console.log('로그인 실패..');
-    },
-  });
-
-  const form = useForm<LoginSchemaType>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      userId: '',
-      password: '',
     },
   });
 
