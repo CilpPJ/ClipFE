@@ -33,6 +33,16 @@ export const SignupForm = () => {
     mode: 'onChange',
   });
 
+  const onSuccess = () => {
+    toast.success('회원가입 성공!');
+    navigate(ROUTER_PATH.LOGIN);
+    form.reset();
+  };
+
+  const onError = (error: Error) => {
+    toast.error(error.message || '회원가입에 실패했습니다.');
+  };
+
   const { mutate: signupMutate, isPending } = useMutation({
     mutationFn: (data: SignupSchemaType) => {
       return signupAPI({
@@ -41,15 +51,8 @@ export const SignupForm = () => {
         nickname: data.nickname,
       });
     },
-    onSuccess: () => {
-      toast.success('회원가입 성공!');
-
-      navigate(ROUTER_PATH.LOGIN);
-      form.reset();
-    },
-    onError: () => {
-      toast.error('회원가입 실패..');
-    },
+    onSuccess,
+    onError,
   });
 
   const onSubmit = (data: SignupSchemaType) => {
