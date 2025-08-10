@@ -1,7 +1,4 @@
-import { toast } from 'sonner';
-
-import { ROUTER_PATH } from '../constants';
-import { useAuthStore } from '../store';
+import { processHttpError } from '../config';
 
 import { initInstance } from './axios-instance';
 
@@ -9,9 +6,7 @@ export const BASE_URL = 'http://localhost:8080';
 
 export const fetchInstance = initInstance({
   baseURL: BASE_URL,
-
   withCredentials: true,
-
   headers: {
     'Content-Type': 'application/json',
   },
@@ -26,13 +21,17 @@ fetchInstance.interceptors.request.use(
       return Promise.reject(error);
     }
 
-    const { clearNickname } = useAuthStore.getState();
+    processHttpError(error);
+    return Promise.reject(error);
+  },
+);
 
-    clearNickname();
-
-    toast.error('세션이 만료되었습니다. 다시 로그인해주세요.');
-
-    window.location.href = ROUTER_PATH.LOGIN;
+fetchInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    processHttpError(error);
 
     return Promise.reject(error);
   },
