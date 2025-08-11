@@ -1,26 +1,20 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
-import type { User } from '../types';
-
-// User type에서 nickname만 가져와서 사용
-type NicknameState = Partial<Pick<User, 'nickname'>>;
-
-type NicknameActions = {
-  setNickname: (nickname: string) => void;
-  clearNickname: () => void;
+// accessToken을 메모리에서만 관리하는 store
+type AccessTokenState = {
+  accessToken: string | null;
 };
 
-export const useAuthStore = create(
-  persist<NicknameState & NicknameActions>(
-    (set) => ({
-      nickname: undefined,
+type AccessTokenActions = {
+  setAccessToken: (token: string) => void;
+  clearAccessToken: () => void;
+};
 
-      setNickname: (nickname) => set({ nickname }),
-      clearNickname: () => set({ nickname: undefined }),
-    }),
-    {
-      name: 'nickname',
-    },
-  ),
+export const useAuthStore = create<AccessTokenState & AccessTokenActions>(
+  (set) => ({
+    accessToken: null,
+
+    setAccessToken: (accessToken) => set({ accessToken }),
+    clearAccessToken: () => set({ accessToken: null }),
+  }),
 );
