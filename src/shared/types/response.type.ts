@@ -14,7 +14,7 @@ interface SuccessResponse<T> extends BaseResponse {
 
 // 요청이 실패했을 때의 응답 타입
 // BaseResponse를 확장하고, status를 'ERROR'로 고정시킨다.
-interface ErrorResponse extends BaseResponse {
+export interface ErrorResponse extends BaseResponse {
   status: 'ERROR';
   errorCode: string;
   errorMessage: string;
