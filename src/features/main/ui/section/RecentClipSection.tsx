@@ -37,8 +37,8 @@ export const RecentClipSection = () => {
           {recentClipsData.content.map((data) => (
             <RecentClipCard
               key={data.tagId}
-              thumbnail={data.tagName}
-              tag={data.url}
+              thumbnail={data.url}
+              tag={data.tagName}
               title={data.title}
               memo={data.memo}
             />
