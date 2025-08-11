@@ -1,7 +1,7 @@
 import type { AxiosError } from 'axios';
 
 import { ROUTER_PATH } from '../constants';
-import { useAuthStore } from '../store';
+import { useAuthStore, useNicknameStore } from '../store';
 
 // 에러 정보 타입
 export interface ErrorInfo {
@@ -12,11 +12,12 @@ export interface ErrorInfo {
 
 // 401 에러 특별 처리 (로그인 페이지 리다이렉트)
 const getUnauthorizedError = (): ErrorInfo => {
-  const { clearNickname } = useAuthStore.getState();
+  const { clearNickname } = useNicknameStore.getState();
+  const { clearAccessToken } = useAuthStore.getState();
   clearNickname();
-
+  clearAccessToken();
   return {
-    message: '인증이 필요합니다.',
+    message: '로그인이 필요합니다.',
     shouldRedirect: true,
     redirectPath: ROUTER_PATH.LOGIN,
   };
