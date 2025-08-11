@@ -5,7 +5,7 @@ import { ROUTER_PATH, useAuthStore } from '@/shared';
 
 export const AuthRoute = () => {
   const navigate = useNavigate();
-  const isLoggedIn = useAuthStore((state) => state.nickname);
+  const isLoggedIn = useAuthStore((state) => state.accessToken);
 
   useEffect(() => {
     if (!isLoggedIn) {
