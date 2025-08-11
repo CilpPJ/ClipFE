@@ -1,4 +1,4 @@
-import { fetchInstance, processApiResponse } from '@/shared';
+import { type ApiResponse, fetchInstance, processApiResponse } from '@/shared';
 
 interface DuplicateNicknameAPIRequest {
   nickname: string;
@@ -15,12 +15,11 @@ export const DUPLICATE_NICKNAME_API_PATH = (nickname: string) =>
 export const duplicateNicknameAPI = async ({
   nickname,
 }: DuplicateNicknameAPIRequest): Promise<DuplicateNicknameAPIResponse> => {
-  const response = await fetchInstance.post(
-    DUPLICATE_NICKNAME_API_PATH(nickname),
-    {
-      nickname,
-    },
-  );
+  const response = await fetchInstance.post<
+    ApiResponse<DuplicateNicknameAPIResponse>
+  >(DUPLICATE_NICKNAME_API_PATH(nickname), {
+    nickname,
+  });
 
   return processApiResponse(response.data);
 };
