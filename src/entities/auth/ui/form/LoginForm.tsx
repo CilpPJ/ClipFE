@@ -34,10 +34,6 @@ export const LoginForm = () => {
     form.reset();
   };
 
-  const onError = (error: Error) => {
-    toast.error(error.message || '로그인 실패..');
-  };
-
   const { mutate: loginMutate } = useMutation({
     mutationFn: (data: LoginSchemaType) => {
       return loginAPI({
@@ -46,7 +42,6 @@ export const LoginForm = () => {
       });
     },
     onSuccess,
-    onError,
   });
 
   const onSubmit = (data: LoginSchemaType) => {

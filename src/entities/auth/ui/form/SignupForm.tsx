@@ -39,10 +39,6 @@ export const SignupForm = () => {
     form.reset();
   };
 
-  const onError = (error: Error) => {
-    toast.error(error.message || '회원가입에 실패했습니다.');
-  };
-
   const { mutate: signupMutate, isPending } = useMutation({
     mutationFn: (data: SignupSchemaType) => {
       return signupAPI({
@@ -52,7 +48,6 @@ export const SignupForm = () => {
       });
     },
     onSuccess,
-    onError,
   });
 
   const onSubmit = (data: SignupSchemaType) => {
