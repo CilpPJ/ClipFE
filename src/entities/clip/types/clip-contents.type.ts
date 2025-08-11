@@ -1,8 +1,8 @@
 export type ClipContents = {
   title: string;
   tagId: number;
+  url: string;
   tagName: string;
-  thumbnail: string;
   memo: string;
   createdAt: string;
 };

@@ -15,15 +15,50 @@ import {
 import { ROUTER_PATH } from '@/shared';
 import { Layout } from '@/widgets';
 
+import { AuthRoute } from './components';
+
 const router = createBrowserRouter(
   [
     {
       path: ROUTER_PATH.MAIN,
-      element: <Layout />,
+      element: <AuthRoute />,
       children: [
         {
-          path: ROUTER_PATH.MAIN,
-          element: <MainPage />,
+          element: <Layout />,
+          children: [
+            {
+              index: true,
+              element: <MainPage />,
+            },
+            {
+              path: ROUTER_PATH.CLIP,
+              element: <ClipPage />,
+            },
+            {
+              path: ROUTER_PATH.CLIP_DETAIL,
+              element: <ClipDetailPage />,
+            },
+            {
+              path: ROUTER_PATH.SEARCH,
+              element: <SearchPage />,
+            },
+            {
+              path: ROUTER_PATH.FRIEND,
+              element: <FriendPage />,
+            },
+            {
+              path: ROUTER_PATH.SETTING,
+              element: <SettingPage />,
+            },
+            {
+              path: ROUTER_PATH.SUMMARY,
+              element: <SummaryPage />,
+            },
+            {
+              path: ROUTER_PATH.ADD,
+              element: <AddPage />,
+            },
+          ],
         },
       ],
     },
@@ -34,34 +69,6 @@ const router = createBrowserRouter(
     {
       path: ROUTER_PATH.SIGN_UP,
       element: <SignupPage />,
-    },
-    {
-      path: ROUTER_PATH.CLIP,
-      element: <ClipPage />,
-    },
-    {
-      path: ROUTER_PATH.CLIP_DETAIL,
-      element: <ClipDetailPage />,
-    },
-    {
-      path: ROUTER_PATH.SEARCH,
-      element: <SearchPage />,
-    },
-    {
-      path: ROUTER_PATH.FRIEND,
-      element: <FriendPage />,
-    },
-    {
-      path: ROUTER_PATH.SETTING,
-      element: <SettingPage />,
-    },
-    {
-      path: ROUTER_PATH.SUMMARY,
-      element: <SummaryPage />,
-    },
-    {
-      path: ROUTER_PATH.ADD,
-      element: <AddPage />,
     },
   ],
   {

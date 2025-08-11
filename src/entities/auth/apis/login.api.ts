@@ -1,4 +1,4 @@
-import { fetchInstance } from '@/shared';
+import { type ApiResponse, fetchInstance, processApiResponse } from '@/shared';
 
 export const LOGIN_API_PATH = '/api/auth/login';
 
@@ -7,11 +7,23 @@ interface LoginAPIRequest {
   password: string;
 }
 
-export const loginAPI = async ({ userId, password }: LoginAPIRequest) => {
-  const response = await fetchInstance.post(LOGIN_API_PATH, {
-    userId,
-    password,
-  });
+export interface LoginResponse {
+  nickname: string;
+  message: string;
+  provider: string;
+}
 
-  return response.data;
+export const loginAPI = async ({
+  userId,
+  password,
+}: LoginAPIRequest): Promise<LoginResponse> => {
+  const response = await fetchInstance.post<ApiResponse<LoginResponse>>(
+    LOGIN_API_PATH,
+    {
+      userId,
+      password,
+    },
+  );
+
+  return processApiResponse(response.data);
 };

@@ -20,7 +20,7 @@ export const ConfirmUserIdField = () => {
   return (
     <FormField
       control={form.control}
-      name='confirmUserId'
+      name='userId'
       render={({ field }) => (
         <FormItem>
           <FormLabel>아이디</FormLabel>
@@ -28,10 +28,7 @@ export const ConfirmUserIdField = () => {
             <FieldWrapper>
               <Input {...field} placeholder='아이디를 입력하세요' />
             </FieldWrapper>
-            <DuplicateCheckButton
-              checkType='userId'
-              fieldName='confirmUserId'
-            />
+            <DuplicateCheckButton checkType='userId' fieldName='userId' />
           </FieldContainer>
           <FormMessage />
         </FormItem>

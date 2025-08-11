@@ -1,4 +1,4 @@
-import { fetchInstance } from '@/shared';
+import { type ApiResponse, fetchInstance, processApiResponse } from '@/shared';
 
 interface DuplicateIdAPIRequest {
   userId: string;
@@ -12,10 +12,14 @@ export interface DuplicateIdAPIResponse {
 export const DUPLICATE_ID_API_PATH = (userId: string) =>
   `/api/auth/check/duplicateId/${userId}`;
 
-export const duplicateIdAPI = async ({ userId }: DuplicateIdAPIRequest) => {
-  const response = await fetchInstance.post(DUPLICATE_ID_API_PATH(userId), {
+export const duplicateIdAPI = async ({
+  userId,
+}: DuplicateIdAPIRequest): Promise<DuplicateIdAPIResponse> => {
+  const response = await fetchInstance.post<
+    ApiResponse<DuplicateIdAPIResponse>
+  >(DUPLICATE_ID_API_PATH(userId), {
     userId,
   });
 
-  return response.data;
+  return processApiResponse(response.data);
 };

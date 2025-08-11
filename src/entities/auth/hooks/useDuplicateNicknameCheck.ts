@@ -21,18 +21,16 @@ export const useDuplicateNicknameCheck = () => {
     onSuccess: (data, variables) => {
       if (data.duplicated) {
         setValue('isNicknameChecked', false);
-        toast.warning(`'${variables}'는 이미 사용 중인 닉네임입니다.`);
+        toast.warning(`${variables}는 이미 사용 중인 닉네임입니다.`);
       } else {
         setValue('isNicknameChecked', true);
-        toast.success(`'${variables}'는 사용 가능한 닉네임입니다!`);
+        toast.success('사용 가능한 닉네임입니다!');
         trigger('nickname');
       }
     },
-    // TODO: 에러코드에 따라 다른 메시지 출력
-    onError: (error) => {
+    onError: () => {
       setValue('isNicknameChecked', false);
       trigger('nickname');
-      toast.error(error.message || '중복 확인 중 에러가 발생했습니다.');
     },
   });
 

@@ -6,16 +6,14 @@ export type GetAllClipsParameter = {
 };
 
 type Sort = {
-  direction: string;
-  nullHandling: string;
-  ascending: boolean;
-  property: string;
-  ignoreCase: boolean;
+  empty: boolean;
+  sorted: boolean;
+  unsorted: boolean;
 };
 
 type Pageable = {
   offset: number;
-  sort: Sort[];
+  sort: Sort;
   paged: boolean;
   pageNumber: number;
   pageSize: number;
@@ -26,7 +24,7 @@ export type AllClipsResponse = {
   size: number;
   content: ClipContents[];
   number: number;
-  sort: Sort[];
+  sort: Sort;
   numberOfElements: number;
   pageable: Pageable;
   first: boolean;

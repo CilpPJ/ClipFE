@@ -6,35 +6,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import type { LoginSchemaType } from '@/entities';
-import { loginAPI, loginSchema } from '@/entities';
-import { Button, Form, ROUTER_PATH } from '@/shared';
+import { Button, Form, ROUTER_PATH, useAuthStore } from '@/shared';
 
+import { type LoginResponse, loginAPI } from '../../apis';
+import { type LoginSchemaType, loginSchema } from '../../model';
 import { PasswordField, UserIdField } from '../components';
 
 export const LoginForm = () => {
+  const { setNickname } = useAuthStore();
+
   const navigate = useNavigate();
-
-  const { mutate: loginMutate } = useMutation({
-    mutationFn: async (data: LoginSchemaType) => {
-      return loginAPI({
-        userId: data.userId,
-        password: data.password,
-      });
-    },
-    onSuccess: () => {
-      toast.success('로그인 성공!');
-
-      navigate(ROUTER_PATH.MAIN);
-
-      form.reset();
-    },
-    onError: (error) => {
-      console.log(error);
-      toast.error('로그인 실패..');
-      console.log('로그인 실패..');
-    },
-  });
 
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
@@ -42,6 +23,25 @@ export const LoginForm = () => {
       userId: '',
       password: '',
     },
+  });
+
+  const onSuccess = (data: LoginResponse) => {
+    toast.success('로그인 성공!');
+
+    setNickname(data.nickname);
+
+    navigate(ROUTER_PATH.MAIN);
+    form.reset();
+  };
+
+  const { mutate: loginMutate } = useMutation({
+    mutationFn: (data: LoginSchemaType) => {
+      return loginAPI({
+        userId: data.userId,
+        password: data.password,
+      });
+    },
+    onSuccess,
   });
 
   const onSubmit = (data: LoginSchemaType) => {

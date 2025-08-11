@@ -18,18 +18,16 @@ export const useDuplicateIdCheck = () => {
     onSuccess: (data, variables) => {
       if (data.duplicated) {
         setValue('isUserIdChecked', false);
-        toast.warning(`'${variables}'는 이미 사용 중인 아이디입니다.`);
+        toast.warning(`${variables}는 이미 사용 중인 아이디입니다.`);
       } else {
         setValue('isUserIdChecked', true);
-        toast.success(`'${variables}'는 사용 가능한 아이디입니다!`);
-        trigger('confirmUserId');
+        toast.success('사용 가능한 아이디입니다!');
+        trigger('userId');
       }
     },
-    // TODO: 에러코드에 따라 다른 메시지 출력
-    onError: (error) => {
+    onError: () => {
       setValue('isUserIdChecked', false);
-      trigger('confirmUserId');
-      toast.error(error.message || '중복 확인 중 에러가 발생했습니다.');
+      trigger('userId');
     },
   });
 

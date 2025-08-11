@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,10 +18,12 @@ import {
 } from '../components';
 
 export const SignupForm = () => {
+  const navigate = useNavigate();
+
   const form = useForm<SignupSchemaType>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      confirmUserId: '',
+      userId: '',
       password: '',
       confirmPassword: '',
       nickname: '',
@@ -31,21 +33,21 @@ export const SignupForm = () => {
     mode: 'onChange',
   });
 
+  const onSuccess = () => {
+    toast.success('회원가입 성공!');
+    navigate(ROUTER_PATH.LOGIN);
+    form.reset();
+  };
+
   const { mutate: signupMutate, isPending } = useMutation({
     mutationFn: (data: SignupSchemaType) => {
       return signupAPI({
-        confirmUserId: data.confirmUserId,
+        userId: data.userId,
         password: data.password,
         nickname: data.nickname,
       });
     },
-    onSuccess: () => {
-      toast.success('회원가입 성공!');
-      form.reset();
-    },
-    onError: () => {
-      toast.error('회원가입 실패..');
-    },
+    onSuccess,
   });
 
   const onSubmit = (data: SignupSchemaType) => {
