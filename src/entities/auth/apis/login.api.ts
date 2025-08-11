@@ -8,6 +8,7 @@ interface LoginAPIRequest {
 }
 
 export interface LoginResponse {
+  accessToken: string;
   nickname: string;
   message: string;
   provider: string;
