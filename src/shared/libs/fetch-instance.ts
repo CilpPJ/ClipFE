@@ -16,14 +16,7 @@ fetchInstance.interceptors.request.use(
   (config) => {
     return config;
   },
-  async (error) => {
-    if (error.response?.status !== 500) {
-      return Promise.reject(error);
-    }
-
-    processHttpError(error);
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
 fetchInstance.interceptors.response.use(
