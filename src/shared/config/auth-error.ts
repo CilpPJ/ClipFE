@@ -67,8 +67,8 @@ export const authErrorInterceptor = async (error: AxiosError) => {
         }
       })
         .then((token) => {
-          if (token && originalRequest) {
-            originalRequest.headers['Authorization'] = `${token}`;
+          if (token && originalRequest?.headers) {
+            originalRequest.headers['Authorization'] = `Bearer ${token}`;
             return fetchInstance(originalRequest);
           }
         })
