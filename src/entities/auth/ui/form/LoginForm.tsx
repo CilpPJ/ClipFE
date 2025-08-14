@@ -6,14 +6,21 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { Button, Form, ROUTER_PATH, useAuthStore } from '@/shared';
+import {
+  Button,
+  Form,
+  ROUTER_PATH,
+  useAuthStore,
+  useNicknameStore,
+} from '@/shared';
 
 import { type LoginResponse, loginAPI } from '../../apis';
 import { type LoginSchemaType, loginSchema } from '../../model';
 import { PasswordField, UserIdField } from '../components';
 
 export const LoginForm = () => {
-  const { setNickname } = useAuthStore();
+  const { setNickname } = useNicknameStore();
+  const { setAccessToken } = useAuthStore();
 
   const navigate = useNavigate();
 
@@ -29,6 +36,7 @@ export const LoginForm = () => {
     toast.success('로그인 성공!');
 
     setNickname(data.nickname);
+    setAccessToken(data.accessToken);
 
     navigate(ROUTER_PATH.MAIN);
     form.reset();
