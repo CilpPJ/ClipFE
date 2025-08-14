@@ -71,6 +71,7 @@ export const authErrorInterceptor = async (error: AxiosError) => {
             originalRequest.headers['Authorization'] = `Bearer ${token}`;
             return fetchInstance(originalRequest);
           }
+          return Promise.reject(error);
         })
         .catch((queueError) => {
           return Promise.reject(queueError);
