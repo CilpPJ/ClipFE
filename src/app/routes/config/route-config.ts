@@ -10,6 +10,7 @@ export type RouteConfig = {
 export const ROUTE_CONFIG: Record<string, RouteConfig> = {
   MAIN: {
     path: ROUTER_PATH.MAIN,
+    title: 'Clip',
     requiresAuth: true,
     layout: 'Main',
   },
