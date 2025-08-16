@@ -39,7 +39,7 @@ export const RecentClipCard = ({ thumbnail, tag, title, memo, url }: Props) => {
   );
 };
 
-const RecentClipList = styled.li`
+const RecentClipList = styled.div`
   display: flex;
   flex-direction: column;
   width: 174px;
