@@ -10,12 +10,12 @@ import {
 } from '@/pages';
 import { Layout } from '@/widgets';
 
-import { ROUTE_CONFIG } from '../config/route.config';
+import { ROUTE_CONFIG } from '../config';
 
 export const protectedRoutes = [
   {
     path: ROUTE_CONFIG.MAIN.path,
-    element: <Layout pageType='Main' />,
+    element: <Layout type='Main' />,
     children: [
       {
         index: true,
@@ -25,7 +25,7 @@ export const protectedRoutes = [
   },
   {
     path: '/',
-    element: <Layout pageType='Page' />,
+    element: <Layout type='Page' />,
     children: [
       {
         path: ROUTE_CONFIG.CLIP.path,

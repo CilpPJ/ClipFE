@@ -1,6 +1,6 @@
 import { LoginPage, SignupPage } from '@/pages';
 
-import { ROUTE_CONFIG } from '../config/route.config';
+import { ROUTE_CONFIG } from '../config';
 
 export const authRoutes = [
   {

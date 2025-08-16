@@ -1,1 +1,2 @@
-export * from './guards/AuthGuard';
+export * from './auth.routes';
+export * from './protected.routes';
