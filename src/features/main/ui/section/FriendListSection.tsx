@@ -4,7 +4,9 @@ export const FriendListSection = () => {
   return (
     <FriendListBox>
       <FriendListHeader>
-        <FriendListHeaderTitle>클리퍼님의 친구 목록</FriendListHeaderTitle>
+        <FriendListHeaderTitle>
+          <b>클리퍼</b>님의 친구 목록
+        </FriendListHeaderTitle>
         <FriendListHeaderDescriptionWrapper>
           <FriendListHeaderDescription>
             친구와 공유한 클립을 확인해보아요!
