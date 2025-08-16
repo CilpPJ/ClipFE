@@ -11,24 +11,22 @@ import {
   ScrollToTop,
 } from '@/shared';
 
-type LayoutProps = {
-  type: HeaderType;
+type PageHandle = {
+  title?: string;
+  layout?: HeaderType;
 };
 
-type PageTitle = {
-  title: string;
-};
-
-export const Layout = ({ type = 'Page' }: LayoutProps) => {
+export const Layout = () => {
   const matches = useMatches();
 
-  const handle = matches[matches.length - 1]?.handle as PageTitle | undefined;
+  const handle = matches[matches.length - 1]?.handle as PageHandle | undefined;
   const title = handle?.title;
+  const layoutType = handle?.layout || 'Page';
 
   return (
     <PageLayout>
       <ScrollToTop />
-      <Header type={type} title={title} />
+      <Header type={layoutType} title={title} />
       <PageContainer>
         <Outlet />
       </PageContainer>
