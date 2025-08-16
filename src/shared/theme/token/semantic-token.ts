@@ -6,6 +6,7 @@ import {
   semanticTypography,
   spacing,
   typography,
+  width,
 } from '../../styles';
 
 export const theme = {
@@ -15,6 +16,7 @@ export const theme = {
   },
   spacing,
   height,
+  width,
   typography: {
     ...typography,
     semantic: semanticTypography,
