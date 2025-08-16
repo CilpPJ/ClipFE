@@ -98,7 +98,7 @@ const TagWrapper = styled.div`
 const RecentClipTag = styled.span`
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   font-weight: ${({ theme }) => theme.typography.fontWeights.medium};
-  color: ${({ theme }) => theme.colors.primitive.black};
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const DescriptionWrapper = styled.div`
@@ -130,6 +130,6 @@ const ShareButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primitive.gray[100]};
+    background-color: ${({ theme }) => theme.colors.background.primary};
   }
 `;
