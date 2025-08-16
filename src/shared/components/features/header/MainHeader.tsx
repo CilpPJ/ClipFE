@@ -32,7 +32,7 @@ export const MainHeader = () => {
 const MainHeaderLayout = styled.header`
   display: flex;
   width: ${({ theme }) => theme.width.full};
-  height: ${({ theme }) => theme.layout.header.height}px;
+  height: ${({ theme }) => theme.layout.header.height};
   padding: ${({ theme }) => theme.spacing[4]};
   align-items: center;
   justify-content: space-between;
