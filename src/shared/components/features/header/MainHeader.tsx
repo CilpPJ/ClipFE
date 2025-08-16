@@ -36,6 +36,7 @@ const TitleWrapper = styled.div`
 
 const TitleText = styled.h1`
   font-size: 1.5rem;
+  font-family: 'BnviitLasik';
 `;
 
 const HeaderButtonWrapper = styled.div`
