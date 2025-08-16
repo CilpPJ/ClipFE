@@ -1,3 +1,5 @@
+import type { MouseEvent } from 'react';
+
 import styled from '@emotion/styled';
 import { Share2 } from 'lucide-react';
 
@@ -6,14 +8,25 @@ type Props = {
   tag: string;
   title: string;
   memo: string;
+  url: string;
 };
 
-export const RecentClipCard = ({ thumbnail, tag, title, memo }: Props) => {
+export const RecentClipCard = ({ thumbnail, tag, title, memo, url }: Props) => {
+  const openLink = () => {
+    window.open(url, '_blank');
+  };
+
+  const shareClip = (event: MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    alert('공유 기능 준비 중입니다!');
+  };
   return (
-    <RecentClipList>
+    <RecentClipList onClick={openLink}>
       <ThumbnailWrapper>
         <ThumbnailImage src={thumbnail} />
-        <Share2 size={15} />
+        <ShareButton onClick={shareClip}>
+          <Share2 size={15} />
+        </ShareButton>
       </ThumbnailWrapper>
       <TagWrapper>
         <RecentClipTag>{tag}</RecentClipTag>
@@ -26,7 +39,7 @@ export const RecentClipCard = ({ thumbnail, tag, title, memo }: Props) => {
   );
 };
 
-const RecentClipList = styled.ul`
+const RecentClipList = styled.div`
   display: flex;
   flex-direction: column;
   width: 174px;
@@ -40,7 +53,7 @@ const RecentClipList = styled.ul`
   flex-shrink: 0;
 `;
 
-const ThumbnailWrapper = styled.li`
+const ThumbnailWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -104,4 +117,19 @@ const ItemDescription = styled.div`
   -webkit-box-orient: vertical;
   line-clamp: 1;
   box-orient: vertical;
+`;
+
+const ShareButton = styled.button`
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 `;

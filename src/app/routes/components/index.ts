@@ -1,1 +1,2 @@
-export * from './AuthRoute';
+export * from './auth.routes';
+export * from './protected.routes';

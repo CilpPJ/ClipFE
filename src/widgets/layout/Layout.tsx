@@ -1,20 +1,32 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useMatches } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
 import {
   HEADER_HEIGHT,
   Header,
+  type HeaderType,
   NAVIGATE_BAR_HEIGHT,
   NavigateBar,
   ScrollToTop,
 } from '@/shared';
 
+type PageHandle = {
+  title?: string;
+  layout?: HeaderType;
+};
+
 export const Layout = () => {
+  const matches = useMatches();
+
+  const handle = matches[matches.length - 1]?.handle as PageHandle | undefined;
+  const title = handle?.title;
+  const layoutType = handle?.layout || 'Page';
+
   return (
     <PageLayout>
       <ScrollToTop />
-      <Header />
+      <Header type={layoutType} title={title} />
       <PageContainer>
         <Outlet />
       </PageContainer>
