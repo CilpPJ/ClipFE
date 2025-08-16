@@ -41,6 +41,7 @@ export const RecentClipSection = () => {
               tag={data.tagName}
               title={data.title}
               memo={data.memo}
+              url={data.url}
             />
           ))}
         </RecentClipCardContainer>
