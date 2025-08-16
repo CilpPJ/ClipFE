@@ -83,11 +83,11 @@ const RecentClipCardContainer = styled.div`
   }
 `;
 
-const EmptyView = styled.span`
+const EmptyView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: ${({ theme }) => theme.width.full};
   min-height: 150px;
-  color: ${({ theme }) => theme.colors.primitive.gray[500]};
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
