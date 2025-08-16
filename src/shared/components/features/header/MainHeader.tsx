@@ -5,7 +5,7 @@ import { Bell, UserRound } from 'lucide-react';
 
 import Clip_Logo from '../../../_assets/logo/clip_logo_2.webp';
 import { ROUTER_PATH } from '../../../constants';
-import { HeaderLayout } from '../../../styles';
+import { HEADER_HEIGHT } from '../../../styles';
 
 export const MainHeader = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export const MainHeader = () => {
   const hasNotification = true;
 
   return (
-    <HeaderLayout>
+    <MainHeaderLayout>
       <TitleContainer>
         <LogoImage src={Clip_Logo} alt='Clip Logo' />
         <TitleText>Clip</TitleText>
@@ -27,9 +27,18 @@ export const MainHeader = () => {
           <UserRound size={28} color='white' strokeWidth={1.5} />
         </UserIconWrapper>
       </HeaderButtonContainer>
-    </HeaderLayout>
+    </MainHeaderLayout>
   );
 };
+const MainHeaderLayout = styled.header`
+  display: flex;
+  width: 100%;
+  height: ${HEADER_HEIGHT}px;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+`;
 
 const TitleContainer = styled.div`
   display: flex;
