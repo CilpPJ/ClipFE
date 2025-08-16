@@ -5,20 +5,21 @@ import styled from '@emotion/styled';
 import {
   HEADER_HEIGHT,
   Header,
+  type HeaderType,
   NAVIGATE_BAR_HEIGHT,
   NavigateBar,
   ScrollToTop,
 } from '@/shared';
 
-type Props = {
-  pageType: 'Main' | 'Page';
+type LayoutProps = {
+  type: HeaderType;
 };
 
 type PageTitle = {
   title: string;
 };
 
-export const Layout = ({ pageType = 'Page' }: Props) => {
+export const Layout = ({ type = 'Page' }: LayoutProps) => {
   const matches = useMatches();
 
   const handle = matches[matches.length - 1]?.handle as PageTitle | undefined;
@@ -27,7 +28,7 @@ export const Layout = ({ pageType = 'Page' }: Props) => {
   return (
     <PageLayout>
       <ScrollToTop />
-      <Header pageType={pageType} title={title} />
+      <Header type={type} title={title} />
       <PageContainer>
         <Outlet />
       </PageContainer>
