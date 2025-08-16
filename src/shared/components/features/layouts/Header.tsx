@@ -1,10 +1,18 @@
+import type { HeaderType } from '../../../types';
 import { MainHeader, PageHeader } from '../header';
 
 type Props = {
-  pageType: 'Main' | 'Page';
+  type: HeaderType;
   title?: string;
 };
 
-export const Header = ({ pageType = 'Page', title }: Props) => {
-  return pageType === 'Main' ? <MainHeader /> : <PageHeader title={title} />;
+const HEADER_COMPONENTS = {
+  Main: MainHeader,
+  Page: PageHeader,
+} as const;
+
+export const Header = ({ type, title }: Props) => {
+  const HeaderComponent = HEADER_COMPONENTS[type];
+
+  return <HeaderComponent title={title} />;
 };
