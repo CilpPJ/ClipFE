@@ -23,20 +23,20 @@ export const DescriptionSection = () => {
 
 const DescriptionBox = styled.section`
   display: flex;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: ${({ theme }) => theme.spacing[7]} 0;
 `;
 
 const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const DescriptionText = styled.span`
-  font-size: 24px;
+  font-size: ${({ theme }) => theme.typography.fontSize.xl};
 `;
 
 const DescriptionWrapper = styled.div`

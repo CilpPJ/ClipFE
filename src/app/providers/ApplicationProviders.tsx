@@ -1,10 +1,11 @@
 import { CookiesProvider } from 'react-cookie';
 
+import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import { queryClient } from '@/shared';
+import { queryClient, theme } from '@/shared';
 
 type Props = {
   children: React.ReactNode;
@@ -14,8 +15,10 @@ export const ApplicationProvider = ({ children }: Props) => {
   return (
     <CookiesProvider>
       <QueryClientProvider client={queryClient}>
-        <AppLayout>{children}</AppLayout>
-        <ReactQueryDevtools initialIsOpen={true} />
+        <ThemeProvider theme={theme}>
+          <AppLayout>{children}</AppLayout>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </ThemeProvider>
       </QueryClientProvider>
     </CookiesProvider>
   );

@@ -33,5 +33,5 @@ export const UserIdField = () => {
 
 const FieldWrapper = styled(FormControl)`
   display: grid;
-  gap: 0.75rem;
+  gap: ${({ theme }) => theme.spacing[3]};
 `;

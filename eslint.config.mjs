@@ -104,6 +104,12 @@ export default tseslint.config(// 기본 설정 옵션
     ],
     'react/react-in-jsx-scope': 'off',
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
+    '@typescript-eslint/no-empty-object-type': [
+        'error',
+        {
+          allowInterfaces: 'with-single-extends',
+        },
+      ],
   },
 
   // 설정 추가 (예: import-resolver)

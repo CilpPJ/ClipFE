@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ChevronRight } from 'lucide-react';
 
@@ -22,13 +21,9 @@ export const RecentClipSection = () => {
   return (
     <RecentClipBox>
       <RecentClipHeader>
-        <span
-          css={css`
-            font-size: 18px;
-          `}
-        >
+        <RecentClipHeaderText>
           <b>클리퍼</b>님이 최근 저장한 클립
-        </span>
+        </RecentClipHeaderText>
         <ChevronRight />
       </RecentClipHeader>
 
@@ -46,9 +41,7 @@ export const RecentClipSection = () => {
           ))}
         </RecentClipCardContainer>
       ) : (
-        <EmptyView>
-          <span>최근 저장한 클립이 없어요. 🧐</span>
-        </EmptyView>
+        <EmptyView>최근 저장한 클립이 없어요. 🧐</EmptyView>
       )}
     </RecentClipBox>
   );
@@ -57,28 +50,32 @@ export const RecentClipSection = () => {
 const RecentClipBox = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   align-items: center;
-  gap: 1rem;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const RecentClipHeader = styled.div`
   display: flex;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   align-items: center;
   justify-content: space-between;
+`;
+
+const RecentClipHeaderText = styled.span`
+  font-size: ${({ theme }) => theme.typography.fontSize.lg};
 `;
 
 const RecentClipCardContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 174px;
-  gap: 1rem;
-  padding: 1rem 10px;
+  gap: ${({ theme }) => theme.spacing[4]};
+  padding: ${({ theme }) => theme.spacing[4]} ${({ theme }) => theme.spacing[2]};
   overflow-x: auto;
   align-items: start;
   justify-content: start;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
@@ -90,9 +87,7 @@ const EmptyView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   min-height: 150px;
-  border-radius: 8px;
-  background-color: #f7f7f7;
-  color: #888;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;

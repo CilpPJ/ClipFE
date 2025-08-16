@@ -2,14 +2,7 @@ import { Outlet, useMatches } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
-import {
-  HEADER_HEIGHT,
-  Header,
-  type HeaderType,
-  NAVIGATE_BAR_HEIGHT,
-  NavigateBar,
-  ScrollToTop,
-} from '@/shared';
+import { Header, type HeaderType, NavigateBar, ScrollToTop } from '@/shared';
 
 type PageHandle = {
   title?: string;
@@ -46,8 +39,8 @@ const PageContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: ${HEADER_HEIGHT}px;
-  padding-bottom: ${NAVIGATE_BAR_HEIGHT}px;
+  margin-top: ${({ theme }) => theme.layout.header.height};
+  padding-bottom: ${({ theme }) => theme.layout.navigation.height};
   width: 100%;
   display: flex;
   flex-direction: column;
