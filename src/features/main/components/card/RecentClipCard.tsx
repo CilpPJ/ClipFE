@@ -44,17 +44,17 @@ const RecentClipList = styled.div`
   flex-direction: column;
   width: 174px;
   height: 210px;
-  padding: 1rem;
+  padding: ${({ theme }) => theme.spacing[4]};
   align-items: start;
-  gap: 0.8rem;
+  gap: ${({ theme }) => theme.spacing[3]};
   border-radius: 10px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.primitive.white};
   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
 `;
 
 const ThumbnailWrapper = styled.div`
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -63,7 +63,7 @@ const ThumbnailWrapper = styled.div`
 const ThumbnailImage = styled.img`
   width: 90px;
   height: 90px;
-  background-color: #b7b7b7;
+  background-color: ${({ theme }) => theme.colors.primitive.gray[300]};
   border-radius: 10px;
 
   object-fit: cover;
@@ -71,10 +71,10 @@ const ThumbnailImage = styled.img`
 `;
 
 const ItemTitle = styled.div`
-  width: 100%;
-  font-size: 16px;
-  font-weight: 500;
-  color: #000;
+  width: ${({ theme }) => theme.width.full};
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
+  font-weight: ${({ theme }) => theme.typography.fontWeights.medium};
+  color: ${({ theme }) => theme.colors.primitive.black};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -89,27 +89,27 @@ const TagWrapper = styled.div`
   width: 60px;
   height: 20px;
   border-radius: 10px;
-  border: 1px solid var(--secondary);
-  background-color: #fff;
+  border: 1px solid ${({ theme }) => theme.colors.border.secondary};
+  background-color: ${({ theme }) => theme.colors.primitive.white};
   align-items: center;
   justify-content: center;
 `;
 
 const RecentClipTag = styled.span`
-  font-size: 12px;
-  font-weight: 500;
-  color: #000;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeights.medium};
+  color: ${({ theme }) => theme.colors.primitive.black};
 `;
 
 const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacing[2]};
 `;
 
 const ItemDescription = styled.div`
-  width: 100%;
-  font-size: 12px;
+  width: ${({ theme }) => theme.width.full};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -122,7 +122,7 @@ const ItemDescription = styled.div`
 const ShareButton = styled.button`
   background: none;
   border: none;
-  padding: 4px;
+  padding: ${({ theme }) => theme.spacing[1]};
   cursor: pointer;
   border-radius: 50%;
   display: flex;
@@ -130,6 +130,6 @@ const ShareButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: ${({ theme }) => theme.colors.primitive.gray[100]};
   }
 `;

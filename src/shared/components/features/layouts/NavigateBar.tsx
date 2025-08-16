@@ -8,8 +8,6 @@ import { ROUTER_PATH } from '../../../constants';
 
 type Tab = 'HOME' | 'CLIP' | 'SEARCH' | 'FRIEND';
 
-export const NAVIGATE_BAR_HEIGHT = 90;
-
 type ButtonItem = {
   tab: Tab;
   icon: React.ElementType;
@@ -101,15 +99,15 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: ${NAVIGATE_BAR_HEIGHT}px;
+  height: ${({ theme }) => theme.layout.navigation.height};
 `;
 
 const Nav = styled.div`
   position: relative;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   max-width: 500px; /* 데스크탑 뷰를 위한 최대 너비 */
   height: 65px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.primitive.white};
   border-radius: 20px 20px 0 0; /* 상단 모서리만 둥글게 */
 
   &::before {
@@ -121,13 +119,13 @@ const Nav = styled.div`
     width: 80px;
     height: 45px;
     border-radius: 0 0 40px 40px;
-    box-shadow: 0 35px 0 0 var(--background-primary);
+    box-shadow: 0 35px 0 0 ${({ theme }) => theme.colors.primitive.gray[100]};
   }
 `;
 
 const NavItemsWrapper = styled.div`
   display: flex;
-  height: 100%;
+  height: ${({ theme }) => theme.height.full};
   align-items: center;
 `;
 
@@ -164,9 +162,9 @@ const FabButton = styled.button`
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #bfd74d;
+  background-color: ${({ theme }) => theme.colors.brand.clip};
   color: white;
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.typography.fontSize.xxl};
   font-weight: 300;
   border: none;
   cursor: pointer;

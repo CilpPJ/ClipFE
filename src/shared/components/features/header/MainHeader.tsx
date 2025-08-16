@@ -5,7 +5,6 @@ import { Bell, UserRound } from 'lucide-react';
 
 import Clip_Logo from '../../../_assets/logo/clip_logo_2.webp';
 import { ROUTER_PATH } from '../../../constants';
-import { HEADER_HEIGHT } from '../../../styles';
 
 export const MainHeader = () => {
   const navigate = useNavigate();
@@ -32,27 +31,28 @@ export const MainHeader = () => {
 };
 const MainHeaderLayout = styled.header`
   display: flex;
-  width: 100%;
-  height: ${HEADER_HEIGHT}px;
-  padding: 1rem;
+  width: ${({ theme }) => theme.width.full};
+  height: ${({ theme }) => theme.layout.header.height}px;
+  padding: ${({ theme }) => theme.spacing[4]};
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
 `;
 
 const TitleContainer = styled.div`
   display: flex;
+  gap: ${({ theme }) => theme.spacing[2]};
   align-items: center;
 `;
 
 const TitleText = styled.h1`
-  font-size: 1.5rem;
-  font-family: 'BnviitLasik';
+  font-size: ${({ theme }) => theme.typography.semantic.mainHeader.fontSize};
+  font-family: ${({ theme }) =>
+    theme.typography.semantic.mainHeader.fontFamily};
 `;
 
 const HeaderButtonContainer = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: ${({ theme }) => theme.spacing[4]};
   align-items: center;
 `;
 
@@ -73,9 +73,9 @@ const NotificationDot = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 10px;
-  height: 10px;
-  background-color: #ff9500;
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: ${({ theme }) => theme.colors.primitive.orange};
   border-radius: 50%;
   border: 1px solid white;
 `;
@@ -85,7 +85,7 @@ const UserIconWrapper = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #d9d9d9;
+  background-color: ${({ theme }) => theme.colors.primitive.gray[400]};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,7 @@ const UserIconWrapper = styled.div`
     display: block;
     margin-top: 9px;
 
-    fill: #979797;
-    stroke: #979797;
+    fill: ${({ theme }) => theme.colors.primitive.gray[500]};
+    stroke: ${({ theme }) => theme.colors.primitive.gray[500]};
   }
 `;

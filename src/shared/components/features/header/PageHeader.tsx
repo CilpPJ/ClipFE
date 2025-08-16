@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { ChevronLeft } from 'lucide-react';
 
 import { ROUTER_PATH } from '../../../constants';
-import { HEADER_HEIGHT } from '../../../styles';
 
 type Props = {
   title?: string;
@@ -15,7 +14,9 @@ export const PageHeader = ({ title }: Props) => {
 
   return (
     <PageHeaderLayout>
-      <ChevronLeft size={25} onClick={() => navigate(ROUTER_PATH.MAIN)} />
+      <IconWrapper>
+        <ChevronLeft size={25} onClick={() => navigate(ROUTER_PATH.MAIN)} />
+      </IconWrapper>
       <TitleWrapper>
         <TitleText>{title}</TitleText>
       </TitleWrapper>
@@ -25,12 +26,19 @@ export const PageHeader = ({ title }: Props) => {
 
 const PageHeaderLayout = styled.header`
   display: flex;
-  width: 100%;
-  height: ${HEADER_HEIGHT}px;
-  padding: 1rem;
+  width: ${({ theme }) => theme.width.full};
+  height: ${({ theme }) => theme.layout.header.height}px;
+  padding: ${({ theme }) => theme.spacing[4]};
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacing[2]};
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 const TitleWrapper = styled.div`
@@ -39,6 +47,9 @@ const TitleWrapper = styled.div`
 `;
 
 const TitleText = styled.h1`
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: ${({ theme }) => theme.typography.semantic.pageHeader.fontSize};
+  font-weight: ${({ theme }) =>
+    theme.typography.semantic.pageHeader.fontWeight};
+  font-family: ${({ theme }) =>
+    theme.typography.semantic.pageHeader.fontFamily};
 `;

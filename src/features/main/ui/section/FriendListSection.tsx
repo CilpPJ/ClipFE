@@ -24,47 +24,47 @@ export const FriendListSection = () => {
 const FriendListBox = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 10px;
+  gap: ${({ theme }) => theme.spacing[4]};
+  padding: ${({ theme }) => theme.spacing[4]} ${({ theme }) => theme.spacing[2]};
 `;
 
 const FriendListHeader = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: ${({ theme }) => theme.spacing[2]};
 `;
 
 const FriendListHeaderTitle = styled.span`
-  font-size: 18px;
-  font-weight: 500;
+  font-size: ${({ theme }) => theme.typography.fontSize.lg};
+  font-weight: ${({ theme }) => theme.typography.fontWeights.medium};
 `;
 
 const FriendListHeaderDescription = styled.span`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
 `;
 
 const FriendListHeaderDescriptionWrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   align-items: center;
   justify-content: space-between;
 `;
 
 const FriendListHeaderEdit = styled.span`
-  font-size: 14px;
-  color: #007aff;
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  color: ${({ theme }) => theme.colors.primitive.blue};
 `;
 
 const FriendListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  padding: 10px 0;
+  gap: ${({ theme }) => theme.spacing[4]};
+  width: ${({ theme }) => theme.width.full};
+  padding: ${({ theme }) => theme.spacing[5]} 0;
   justify-items: center;
 `;
 
@@ -75,7 +75,7 @@ const FriendListCard = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  padding: 0 10px;
-  background-color: #fff;
+  padding: 0 ${({ theme }) => theme.spacing[2]};
+  background-color: ${({ theme }) => theme.colors.primitive.white};
   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.25);
 `;
