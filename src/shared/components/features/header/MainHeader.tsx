@@ -24,7 +24,7 @@ export const MainHeader = () => {
           {hasNotification && <NotificationDot />}
         </NotificationIconWrapper>
         <UserIconWrapper onClick={() => navigate(ROUTER_PATH.SETTING)}>
-          <UserRound size={28} color='white' strokeWidth={1.5} />
+          <UserRound size={28} strokeWidth={1.5} />
         </UserIconWrapper>
       </HeaderButtonContainer>
     </MainHeaderLayout>
