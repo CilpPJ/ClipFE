@@ -12,8 +12,9 @@ export const colors = {
   white: '#FFFFFF',
   orange: '#ff9500',
   green: '#008000',
-  yellowGreen: '#BF764D',
+  yellowGreen: '#BFD74D',
   skyBlue: '#95D9FF',
   red: '#FF0000',
   yellow: '#FEE500',
+  blue: '#007aff',
 } as const;
