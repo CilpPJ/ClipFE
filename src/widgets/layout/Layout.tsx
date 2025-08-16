@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useMatches } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
@@ -10,11 +10,24 @@ import {
   ScrollToTop,
 } from '@/shared';
 
-export const Layout = () => {
+type Props = {
+  pageType: 'Main' | 'Page';
+};
+
+type PageTitle = {
+  title: string;
+};
+
+export const Layout = ({ pageType = 'Page' }: Props) => {
+  const matches = useMatches();
+
+  const handle = matches[matches.length - 1]?.handle as PageTitle | undefined;
+  const title = handle?.title;
+
   return (
     <PageLayout>
       <ScrollToTop />
-      <Header />
+      <Header pageType={pageType} title={title} />
       <PageContainer>
         <Outlet />
       </PageContainer>
