@@ -32,9 +32,15 @@ export const ROUTE_CONFIG: Record<string, RouteConfig> = {
     requiresAuth: true,
     layout: 'Page',
   },
-  FRIEND: {
-    path: ROUTER_PATH.FRIEND,
+  FRIEND_SEARCH: {
+    path: ROUTER_PATH.FRIEND_SEARCH,
     title: '친구 찾기',
+    requiresAuth: true,
+    layout: 'Page',
+  },
+  FRIEND_SHARED: {
+    path: ROUTER_PATH.FRIEND_SHARED,
+    title: '친구가 공유한 클립',
     requiresAuth: true,
     layout: 'Page',
   },
