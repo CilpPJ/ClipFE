@@ -7,7 +7,8 @@ export const ROUTER_PATH = {
   LOGIN: '/login',
   SIGN_UP: '/signup',
   SEARCH: '/search',
-  FRIEND: '/friend',
+  FRIEND_SEARCH: '/friend/search',
+  FRIEND_SHARED: '/friend/shared',
   SETTING: '/setting',
   SUMMARY: '/summary',
 };
