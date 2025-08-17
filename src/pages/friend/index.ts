@@ -1,1 +1,2 @@
-export { default as FriendPage } from './FriendPage';
+export * from './search';
+export * from './shared';
