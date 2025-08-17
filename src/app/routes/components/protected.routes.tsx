@@ -2,7 +2,8 @@ import {
   AddPage,
   ClipDetailPage,
   ClipPage,
-  FriendPage,
+  FriendSharedPage,
+  FriendsSearchPage,
   MainPage,
   SearchPage,
   SettingPage,
@@ -39,9 +40,14 @@ export const protectedRoutes = [
         handle: { title: ROUTE_CONFIG.SEARCH.title, layout: 'Page' },
       },
       {
-        path: ROUTE_CONFIG.FRIEND.path,
-        element: <FriendPage />,
-        handle: { title: ROUTE_CONFIG.FRIEND.title, layout: 'Page' },
+        path: ROUTE_CONFIG.FRIEND_SEARCH.path,
+        element: <FriendsSearchPage />,
+        handle: { title: ROUTE_CONFIG.FRIEND_SEARCH.title, layout: 'Page' },
+      },
+      {
+        path: ROUTE_CONFIG.FRIEND_SHARED.path,
+        element: <FriendSharedPage />,
+        handle: { title: ROUTE_CONFIG.FRIEND_SHARED.title, layout: 'Page' },
       },
       {
         path: ROUTE_CONFIG.SETTING.path,
