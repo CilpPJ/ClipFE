@@ -6,7 +6,7 @@ import { FolderSearch, Home, Paperclip, Plus, UserSearch } from 'lucide-react';
 
 import { ROUTER_PATH } from '../../../constants';
 
-type Tab = 'HOME' | 'CLIP' | 'SEARCH' | 'FRIEND';
+type Tab = 'HOME' | 'CLIP' | 'SEARCH' | 'FRIEND_SEARCH';
 
 type ButtonItem = {
   tab: Tab;
@@ -35,10 +35,10 @@ const BUTTON_LIST: ButtonItem[] = [
     path: ROUTER_PATH.SEARCH,
   },
   {
-    tab: 'FRIEND',
+    tab: 'FRIEND_SEARCH',
     icon: UserSearch,
-    text: 'FRIEND',
-    path: ROUTER_PATH.FRIEND,
+    text: 'FRIEND_SEARCH',
+    path: ROUTER_PATH.FRIEND_SEARCH,
   },
 ];
 
