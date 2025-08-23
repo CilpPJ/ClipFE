@@ -1,27 +1,21 @@
-import { useState } from 'react';
-
 import styled from '@emotion/styled';
 
-interface UserCardProps {
+type Props = {
   text: string;
-}
-
-interface UserAddProps {
   isFriend: boolean;
-}
+  onToggleFriend: () => void;
+};
 
-export const UserCard = ({ text }: UserCardProps) => {
-  const [isFriend, setIsFriend] = useState(false);
+type UserAddProps = {
+  isFriend: boolean;
+};
 
-  const handleToggleFriend = () => {
-    setIsFriend(!isFriend);
-  };
-
+export const UserCard = ({ text, isFriend, onToggleFriend }: Props) => {
   return (
     <CardContainer>
       <UserName>{text}</UserName>
-      <UserAdd onClick={handleToggleFriend} isFriend={isFriend}>
-        {isFriend ? '친구' : '친구추가'}
+      <UserAdd onClick={onToggleFriend} isFriend={isFriend}>
+        {isFriend ? '✓ 친구' : '친구추가'}
       </UserAdd>
     </CardContainer>
   );
@@ -44,7 +38,6 @@ const UserName = styled.p`
 `;
 
 const UserAdd = styled.button<UserAddProps>`
-  background-color: #bfd74d;
   padding: 5px 10px;
   border-radius: 5px;
   font-weight: 700;

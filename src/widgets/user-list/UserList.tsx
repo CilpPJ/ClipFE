@@ -1,13 +1,35 @@
+import { useState } from 'react';
+
 import styled from '@emotion/styled';
 
 import { UserCard } from '@/entities/friend/UserCard';
 
 export const UserList = () => {
+  const [friends, setFriends] = useState([
+    { id: 1, name: '김클립', isFriend: false },
+    { id: 2, name: '김도비', isFriend: true },
+  ]);
+
+  const handleToggleFriend = (clickedId: number) => {
+    const updatedFriends = friends.map((friend) =>
+      friend.id === clickedId
+        ? { ...friend, isFriend: !friend.isFriend }
+        : friend,
+    );
+    setFriends(updatedFriends);
+  };
+
   return (
     <ListContainer>
       <Description>검색결과</Description>
-      <UserCard text='김클립'></UserCard>
-      <UserCard text='김도비'></UserCard>
+      {friends.map((friend) => (
+        <UserCard
+          key={friend.id}
+          text={friend.name}
+          isFriend={friend.isFriend}
+          onToggleFriend={() => handleToggleFriend(friend.id)}
+        />
+      ))}
     </ListContainer>
   );
 };
