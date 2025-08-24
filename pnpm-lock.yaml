@@ -195,9 +195,6 @@ importers:
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
-      preview:
-        specifier: link:@storybook/addon-a11y/preview
-        version: link:@storybook/addon-a11y/preview
       storybook:
         specifier: ^9.0.14
         version: 9.0.14(@testing-library/dom@10.4.0)(prettier@3.6.2)
