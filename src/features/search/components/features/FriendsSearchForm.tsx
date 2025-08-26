@@ -3,44 +3,48 @@ import { Search } from 'lucide-react';
 
 export const FriendsSearchForm = () => {
   return (
-    <FormContainer>
+    <FriendSearchForm>
       <Description>친구를 추가하여 함께 클립을 공유해보아요!</Description>
-      <SearchContainer>
-        <SearchInput placeholder='닉네임을 입력해 주세요 (한글)'></SearchInput>
+      <SearchInputContainer>
+        <SearchInput placeholder='닉네임을 입력해 주세요 (한글)' />
         <SearchButton>
-          <Search size={30} color='white'></Search>
+          <Search size={24} color='white' />
         </SearchButton>
-      </SearchContainer>
-    </FormContainer>
+      </SearchInputContainer>
+    </FriendSearchForm>
   );
 };
 
-const FormContainer = styled.form`
+const FriendSearchForm = styled.form`
   display: flex;
+  width: ${({ theme }) => theme.width.full};
   flex-direction: column;
-  margin: 0 30px;
-  gap: 20px;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
-const Description = styled.h4`
-  font-weight: 500;
+const Description = styled.span`
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
+  font-weight: ${({ theme }) => theme.typography.fontWeights.thin};
 `;
 
-const SearchContainer = styled.div`
+const SearchInputContainer = styled.div`
   display: flex;
-  gap: 20px;
+  width: ${({ theme }) => theme.width.full};
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const SearchInput = styled.input`
-  flex: 1;
-  padding: 15px 20px;
+  width: ${({ theme }) => theme.width.full};
+  padding-left: ${({ theme }) => theme.spacing[4]};
+  height: ${({ theme }) => theme.height.md};
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.039);
 
   &::placeholder {
-    color: #979797;
-    font-size: 18px;
+    color: ${({ theme }) => theme.colors.primitive.gray[500]};
+    font-size: ${({ theme }) => theme.typography.fontSize.sm};
   }
 
   &:focus {
@@ -49,10 +53,14 @@ const SearchInput = styled.input`
 `;
 
 const SearchButton = styled.button`
-  cursor: pointer;
-  background-color: #bfd74d;
-  padding: 12px 15px;
-  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.brand.clip};
+  border-radius: 5px;
+  width: 35px;
+  height: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:focus {
     outline: none;
