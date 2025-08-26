@@ -1,2 +1,2 @@
 export * from './main';
-export * from './search';
+export * from './friend-search';
