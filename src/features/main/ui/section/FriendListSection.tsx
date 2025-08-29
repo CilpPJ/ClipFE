@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
 
-export const FriendListSection = () => {
+type Props = {
+  nickname: string;
+};
+
+export const FriendListSection = ({ nickname }: Props) => {
   return (
     <FriendListBox>
       <FriendListHeader>
-        <FriendListHeaderTitle>
-          <b>클리퍼</b>님의 친구 목록
-        </FriendListHeaderTitle>
+        <FriendListHeaderTitle>{nickname}님의 친구 목록</FriendListHeaderTitle>
         <FriendListHeaderDescriptionWrapper>
           <FriendListHeaderDescription>
             친구와 공유한 클립을 확인해보아요!

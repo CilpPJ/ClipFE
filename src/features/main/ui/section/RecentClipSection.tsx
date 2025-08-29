@@ -6,7 +6,11 @@ import { LoadingView } from '@/shared';
 import { RecentClipCard } from '../../components';
 import { useGetAllClips } from '../../hooks';
 
-export const RecentClipSection = () => {
+type Props = {
+  nickname: string;
+};
+
+export const RecentClipSection = ({ nickname }: Props) => {
   const { data: recentClipsData } = useGetAllClips({
     lastCreatedAt: '',
     size: 10,
@@ -22,7 +26,7 @@ export const RecentClipSection = () => {
     <RecentClipBox>
       <RecentClipHeader>
         <RecentClipHeaderText>
-          <b>클리퍼</b>님이 최근 저장한 클립
+          <b>{nickname}</b>님이 최근 저장한 클립
         </RecentClipHeaderText>
         <ChevronRight />
       </RecentClipHeader>
