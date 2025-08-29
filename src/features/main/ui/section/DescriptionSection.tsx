@@ -2,12 +2,16 @@ import styled from '@emotion/styled';
 
 import Clip_Logo from '@/shared/_assets/logo/clip_3d.webp';
 
-export const DescriptionSection = () => {
+type Props = {
+  nickname: string;
+};
+
+export const DescriptionSection = ({ nickname }: Props) => {
   return (
     <DescriptionBox>
       <DescriptionContainer>
         <DescriptionText>
-          <b>클리퍼</b>님,
+          <b>{nickname}</b>님,
         </DescriptionText>
         <DescriptionWrapper>
           <DescriptionText>
