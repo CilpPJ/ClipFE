@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 
 import {
@@ -5,13 +7,20 @@ import {
   FriendListSection,
   RecentClipSection,
 } from '@/features';
+import { ROUTER_PATH, useNicknameStore } from '@/shared';
 
 export default function MainPage() {
+  const nickname = useNicknameStore((state) => state.nickname);
+
+  if (!nickname) {
+    return <Navigate to={ROUTER_PATH.LOGIN} />;
+  }
+
   return (
     <MainPageLayout>
-      <DescriptionSection />
-      <RecentClipSection />
-      <FriendListSection />
+      <DescriptionSection nickname={nickname} />
+      <RecentClipSection nickname={nickname} />
+      <FriendListSection nickname={nickname} />
     </MainPageLayout>
   );
 }
