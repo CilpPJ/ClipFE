@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
@@ -7,10 +8,28 @@ import {
   FriendListSection,
   RecentClipSection,
 } from '@/features';
-import { ROUTER_PATH, useNicknameStore } from '@/shared';
+import { LoadingView, ROUTER_PATH, useNicknameStore } from '@/shared';
 
 export default function MainPage() {
   const nickname = useNicknameStore((state) => state.nickname);
+
+  const [isHydrated, setIsHydrated] = useState(
+    useNicknameStore.persist.hasHydrated(),
+  );
+
+  useEffect(() => {
+    const unsub = useNicknameStore.persist.onFinishHydration(() =>
+      setIsHydrated(true),
+    );
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  if (!isHydrated) {
+    return <LoadingView />;
+  }
 
   if (!nickname) {
     return <Navigate to={ROUTER_PATH.LOGIN} />;
