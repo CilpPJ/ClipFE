@@ -9,7 +9,7 @@ export const spacing = {
 } as const;
 
 export const height = {
-  full: '100%',
+  full: '100%', // 100%
   xs: '2rem', // 32px
   sm: '2.5rem', // 40px
   md: '3rem', // 48px
