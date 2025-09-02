@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import styled from '@emotion/styled';
 
-import { UserCard } from '@/entities/friend/UserCard';
+import { UserCard } from '../../components';
 
-export const UserList = () => {
+export const UserListSection = () => {
   const [friends, setFriends] = useState([
     { id: 1, name: '김클립', isFriend: false },
     { id: 2, name: '김도비', isFriend: true },
@@ -35,12 +35,13 @@ export const UserList = () => {
 };
 
 const ListContainer = styled.div`
-  margin: 30px 30px;
+  width: ${({ theme }) => theme.width.full};
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const Description = styled.h3`
-  font-weight: 700;
+  width: ${({ theme }) => theme.width.full};
+  font-weight: ${({ theme }) => theme.typography.fontWeights.medium};
 `;
